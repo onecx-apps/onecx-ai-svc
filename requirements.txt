@@ -43,7 +43,7 @@ importlib-metadata==6.8.0
 inflection==0.5.1
 itsdangerous==2.1.2
 Jinja2==3.1.2
-jsonschema==4.19.0
+jsonschema==4.21.1
 jsonschema-specifications==2023.7.1
 langchain==0.0.331
 langsmith==0.0.52
