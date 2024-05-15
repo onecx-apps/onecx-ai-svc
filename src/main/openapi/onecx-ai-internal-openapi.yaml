@@ -1,0 +1,1092 @@
+---
+openapi: 3.0.3
+info:
+  title: onecx-ai internal service
+  version: 1.0.0
+servers:
+  - url: "http://onecx-ai-svc:8080"
+tags:
+  - name: aiKnowledgeBaseInternal
+  - name: aiInternal  
+paths:
+
+  /internal/ai/ai-knowledgebases:                  
+    post:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Create an AI AIKnowledgeBase
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIKnowledgeBase'
+      responses:
+        '201':
+          description: Created
+
+  /internal/ai/ai-knowledgebases/{ai-knowledgebase-id}:
+    put:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Update an AI Knowledgebase
+      parameters:
+        - name: ai-knowledgebase-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIKnowledgeBase'
+      responses:
+        '204':
+          description: AI AIKnowledgeBase updated
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
+        "404":
+          description: AI Provider not found 
+    delete:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Delete an AI AIKnowledgeBase
+      parameters:
+        - name: ai-knowledgebase-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+
+  /internal/ai/ai-knowledgebases/{ai-knowledgebase-id}/ai-contexts:
+    post:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Create an AI Context
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIContext'
+      responses:
+        '201':
+          description: Created
+
+
+  /internal/ai/ai-knowledgebases/search:
+    post:
+      summary: Find AI AIKnowledgeBase by Search Criteria
+      parameters:
+        - name: ai-knowledgebase-search-criteria
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/AIKnowledgeBaseSearchCriteria'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIKnowledgeBasePageResult'
+
+
+  /internal/ai/ai-contexts/{ai-context-id}:
+
+    delete:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Delete AIContext
+      parameters:
+        - name: ai-context-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: AI Context deleted
+
+    put:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Update an AI Context
+      parameters:
+        - name: ai-context-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIContext'
+      responses:
+        '204':
+          description: AI Context updated
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
+        "404":
+          description: AI Provider not found
+  
+  /internal/ai/ai-contexts/{ai-context-id}/documents:
+    post:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Upload Documents into Document Management and create AI Knowledge Documents
+      parameters:
+        - name: ai-context-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                documents:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Document'
+      responses:
+        '201':
+          description: Created
+
+  /internal/ai/ai-contexts/{ai-context-id}/ai-providers/{ai-provider-id}:
+    put:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Add AI Provider to AI Context
+      parameters:
+        - name: ai-context-id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ai-provider-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIProvider'
+      responses:
+        '204':
+          description: AI Provider added to AI Context
+    delete:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Remove AI Provider from AI Context
+      parameters:
+        - name: ai-context-id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: ai-provider-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: AI Provider removed from AI Context
+
+
+  /internal/ai/ai-contexts/{ai-context-id}/ai-knowledge-vdb:
+    post:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Create Knowledge Vector database
+      parameters:
+        - name: ai-context-id
+          in: path
+          required: true
+          schema:
+            type: string      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIKnowledgeVectorDb'
+      responses:
+        '201':
+          description: Created
+
+
+  /internal/ai/ai-contexts/{ai-context-id}/ai-knowledge-urls:
+    post:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Create Knowledge URL
+      parameters:
+        - name: ai-context-id
+          in: path
+          required: true
+          schema:
+            type: string      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIKnowledgeUrl'
+      responses:
+        '201':
+          description: Created
+
+  /internal/ai/ai-contexts/{ai-context-id}/ai-knowledge-documents:
+    put:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Embed AI Knowledge Documents
+      parameters:
+        - name: ai-context-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AIKnowledgeDocument'
+      responses:
+        '204':
+          description: AI Knowledge Documents embedded
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
+
+    post:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Create an AI Knowledge Document
+      parameters:
+        - name: ai-context-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIKnowledgeDocument'
+      responses:
+        '201':
+          description: Created
+  
+
+  /internal/ai/ai-contexts/{ai-context-id}/ai-knowledge-databases:
+    post:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Create an AIKnowledgeDatabase to AIContext
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIKnowledgeDatabase'
+      responses:
+        '201':
+          description: Created
+
+  /internal/ai/ai-knowledge-databases/{ai-knowledge-database-id}:
+    put:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Update Knowledge Database
+      parameters:
+        - name: ai-knowledge-database-id
+          in: query
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIKnowledgeDatabase'
+      responses:
+        '204':
+          description: AI KnowledgeDb updated
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
+        "404":
+          description: AI KnowledgeDb not found  
+    delete:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Delete Knowledge Database from AI Context
+      parameters:
+        - name: ai-context-id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Knowledge Database deleted
+
+
+  /internal/ai/ai-contexts/search:
+    post:
+      tags:
+        - aiInternal
+      summary: Find AI Context by Search Criteria
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIContextSearchCriteria'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIContextPageResult'
+
+  /internal/ai/ai-providers:                  
+    post:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Create an AI Provider
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIProvider'
+      responses:
+        '201':
+          description: Created
+
+  /internal/ai/ai-providers/{ai-provider-id}:
+    put:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Update an AI Provider
+      parameters:
+        - name: ai-provider-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIProvider'
+      responses:
+        '204':
+          description: AI Provider updated
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
+        "404":
+          description: AI Provider not found 
+    delete:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Delete an AI Provider
+      parameters:
+        - name: ai-provider-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+  /internal/ai/ai-providers/search:
+    post:
+      summary: Find AI Providers by Search Criteria
+      parameters:
+        - name: ai-provider-search-criteria
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/AIProviderSearchCriteria'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIProviderPageResult'
+
+
+            
+  /internal/ai/ai-knowledge-documents/{ai-knowledge-document-id}:
+    put:
+      tags:
+        - aiKnowledgeBaseInternal
+      summary: Update an AIKnowledgeDocument
+      parameters:
+        - name: ai-knowledge-document-id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIKnowledgeDocument'
+      responses:
+        '204':
+          description: AIKnowledgeDocument updated
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
+        "404":
+          description: AI Provider not found
+
+    delete:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Delete AI Knowledge Document
+      parameters:
+        - name: ai-knowledge-document-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: AI Knowledge Document deleted
+
+  /internal/ai/ai-knowledge-urls/{ai-knowledge-url-id}:
+    put:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Update AIKnowledgeUrl
+      parameters:
+        - name: ai-knowledge-url-id
+          in: query
+          required: true
+          schema:
+            type: string      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIKnowledgeUrl'
+      responses:
+        '204':
+          description: AI KnowledgeUrl updated
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
+        "404":
+          description: AI KnowledgeUrl not found                         
+    delete:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Delete AIKnowledgeUrl
+      parameters:
+        - name: ai-knowledge-url-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: AIKnowledgeUrl deleted
+  
+
+  /internal/ai/ai-knowledge-vdbs/{ai-knowledge-vdb-id}:
+    put:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Update AIKnowlegeVectorDb
+      parameters:
+        - name: ai-knowledge-vdb-id
+          in: query
+          required: true
+          schema:
+            type: string      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIKnowledgeVectorDb'
+      responses:
+        '204':
+          description: AIKnowlegeVectorDb updated
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
+        "404":
+          description: AIKnowlegeVectorDb not found                         
+    delete:
+      tags:
+        - aiKnowledgeBaseInternal    
+      summary: Delete AIKnowlegeVectorDb
+      parameters:
+        - name: ai-knowledge-vdb-id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content
+
+
+  /generate:
+    post:
+      tags:
+        - aiInternal    
+      summary: Generate AI Response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aiContext:
+                  $ref: '#/components/schemas/AIContext'               
+                aiRequest:
+                  $ref: '#/components/schemas/AIRequest'
+              required:
+                - aiContext
+                - aiRequest
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIResponse'
+  /chat:
+    post:
+      tags:
+        - aiInternal    
+      summary: Chat with AI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aiContext:
+                  $ref: '#/components/schemas/AIContext'              
+                chatMessage:
+                  $ref: '#/components/schemas/ChatMessage'
+                conversation:
+                  $ref: '#/components/schemas/Conversation'
+              required:
+                - aiContext
+                - chatMessage
+              additionalProperties: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatMessage'
+
+           
+
+
+components:
+  schemas:
+    DocumentStatusType:
+      type: string
+      enum:
+        - NEW
+        - PROCESSING
+        - EMBEDDED
+    AIRequest:
+      type: object
+      properties:
+        message:
+          type: string
+          maxLength: 10000
+    AIResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          maxLength: 10000          
+    ChatMessage:
+      type: object
+      properties:
+        conversationId:
+          type: string
+        message:
+          type: string
+          maxLength: 10000
+        type:
+          type: string
+          enum: [ASSISTANT, SYSTEM, USER, ACTION]
+        creationDate:
+          type: integer
+          format: int64
+        reliability:
+          type: float
+    Conversation:
+      type: object
+      properties:
+        conversationId:
+          type: string
+        history:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+        conversationType:
+          type: string
+          enum: [Q_AND_A]
+    Document:
+      type: object
+      properties:
+        content:
+          type: string
+          format: byte
+          description: Base64 encoded document content        
+    AIProviderSearchCriteria:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        modelName:
+          type: string       
+        appId:
+          type: string                                      
+        tenandId:
+          type: string          
+        pageNumber:
+          format: int32
+          description: The number of page.
+          default: 0
+          type: integer
+        pageSize:
+          format: int32
+          description: The size of page
+          default: 10
+          type: integer    
+    AIContextSearchCriteria:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        appId:
+          type: string                                      
+        tenandId:
+          type: string          
+        pageNumber:
+          format: int32
+          description: The number of page.
+          default: 0
+          type: integer
+        pageSize:
+          format: int32
+          description: The size of page
+          default: 10
+          type: integer
+    AIKnowledgeBaseSearchCriteria:
+      type: object
+      properties:    
+        id:
+          type: string
+        name:
+          type: string
+        appId:
+          type: string                                      
+        tenandId:
+          type: string          
+        pageNumber:
+          format: int32
+          description: The number of page.
+          default: 0
+          type: integer
+        pageSize:
+          format: int32
+          description: The size of page
+          default: 10
+          type: integer
+    AIKnowledgeBasePageResult:
+      type: object
+      properties:
+        totalElements:
+          format: int64
+          description: The total elements in the resource.
+          type: integer
+        number:
+          format: int32
+          type: integer
+        size:
+          format: int32
+          type: integer
+        totalPages:
+          format: int64
+          type: integer
+        stream:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIKnowledgeBase'
+    AIKnowledgeBase:
+      required:
+        - type
+      type: object
+      properties:
+        version:
+          format: int32
+          type: integer
+        creationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        creationUser:
+          type: string
+        modificationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        modificationUser:
+          type: string
+        id:
+          type: string
+        description:
+          type: string
+        name:
+          type: string
+        appId:
+          type: string
+        contexts:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIContext'
+    AIProvider:
+      required:
+        - name
+        - modelName
+        - modelVersion
+      type: object
+      properties:
+        version:
+          format: int32
+          type: integer
+        creationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        creationUser:
+          type: string
+        modificationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        modificationUser:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        llmUrl:
+          type: string
+        modelName:
+          type: string
+        modelVersion:
+          type: string
+        apiKey:
+          type: string
+    AIProviderPageResult:
+      type: object
+      properties:
+        totalElements:
+          format: int64
+          description: The total elements in the resource.
+          type: integer
+        number:
+          format: int32
+          type: integer
+        size:
+          format: int32
+          type: integer
+        totalPages:
+          format: int64
+          type: integer
+        stream:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIProvider'                                                      
+    AIKnowledgeDocument:
+      required:
+        - documentRefId
+      type: object
+      properties:
+        version:
+          format: int32
+          type: integer
+        creationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        creationUser:
+          type: string
+        modificationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        modificationUser:
+          type: string
+        id:
+          type: string
+        status:
+          $ref: '#/components/schemas/DocumentStatusType'
+        name:
+          type: string
+        documentRefId:
+          type: string
+    AIKnowledgeUrl:
+      required:
+        - url
+      type: object
+      properties:
+        version:
+          format: int32
+          type: integer
+        creationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        creationUser:
+          type: string
+        modificationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        modificationUser:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+    AIKnowledgeVectorDb:
+      required:
+        - vdbUrl
+        - user
+        - pwd
+      type: object
+      properties:
+        version:
+          format: int32
+          type: integer
+        creationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        creationUser:
+          type: string
+        modificationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        modificationUser:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        vdbUrl:
+          type: string
+        vdbCollection:
+          type: string 
+        user:
+          type: string
+        pwd:
+          type: string          
+    AIKnowledgeDatabase:
+      required:
+        - db
+        - user
+        - pwd
+      type: object
+      properties:
+        version:
+          format: int32
+          type: integer
+        creationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        creationUser:
+          type: string
+        modificationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        modificationUser:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        db:
+          type: string
+        user:
+          type: string 
+        pwd:
+          type: string
+        tables:
+          type: array
+          items:
+            type: string
+    AIMessage:
+      type: object
+      properties:
+        content:
+          type: string
+        sender:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        # Add any other relevant properties here, such as ID or metadata            
+    AIContext:
+      required:
+        - name
+        - userId
+      type: object
+      properties:
+        version:
+          format: int32
+          type: integer
+        creationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        creationUser:
+          type: string
+        modificationDate:
+          $ref: '#/components/schemas/OffsetDateTime'
+        modificationUser:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        llmSystemMessage:
+          type: string
+        llmProvider:
+          $ref: '#/components/schemas/AIProvider'
+        vectorDb:
+          $ref: '#/components/schemas/AIKnowledgeVectorDb'          
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIKnowledgeDocument'
+        urls:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIKnowledgeUrl'
+        dbs:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIKnowledgeDatabase'
+    AIContextPageResult:
+      type: object
+      properties:
+        totalElements:
+          format: int64
+          description: The total elements in the resource.
+          type: integer
+        number:
+          format: int32
+          type: integer
+        size:
+          format: int32
+          type: integer
+        totalPages:
+          format: int64
+          type: integer
+        stream:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIContext' 
+    OffsetDateTime:
+      format: date-time
+      type: string
+      example: 2022-03-10T12:15:50-04:00
+    ProblemDetailResponse:
+      type: object
+      properties:
+        errorCode:
+          type: string
+        detail:
+          type: string
+        params:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProblemDetailParam'
+        invalidParams:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProblemDetailInvalidParam'
+    ProblemDetailParam:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    ProblemDetailInvalidParam:
+      type: object
+      properties:
+        name:
+          type: string
+        message:
+          type: string

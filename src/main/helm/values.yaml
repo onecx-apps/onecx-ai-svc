@@ -1,0 +1,6 @@
+app:
+  image:
+    repository: "onecx-apps/onecx-ai-quarkus-svc"
+    tag: 999-SNAPSHOT
+  db:
+    enabled: true
