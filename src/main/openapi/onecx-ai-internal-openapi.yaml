@@ -652,9 +652,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ChatMessage'
 
-           
-
-
 components:
   schemas:
     DocumentStatusType:
@@ -716,6 +713,8 @@ components:
         id:
           type: string
         name:
+          type: string
+        description:
           type: string
         modelName:
           type: string       
@@ -844,6 +843,8 @@ components:
         id:
           type: string
         name:
+          type: string
+        description:
           type: string
         llmUrl:
           type: string
@@ -1001,7 +1002,6 @@ components:
     AIContext:
       required:
         - name
-        - userId
       type: object
       properties:
         version:
