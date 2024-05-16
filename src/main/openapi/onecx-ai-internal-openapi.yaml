@@ -596,7 +596,7 @@ paths:
           description: No Content
 
 
-  /generate:
+  /internal/ai/generate:
     post:
       tags:
         - aiInternal    
@@ -622,7 +622,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AIResponse'
-  /chat:
+  /internal/ai/chat:
     post:
       tags:
         - aiInternal    
