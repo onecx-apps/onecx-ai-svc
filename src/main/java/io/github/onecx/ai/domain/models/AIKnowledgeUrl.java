@@ -29,10 +29,8 @@ public class AIKnowledgeUrl extends TraceableEntity {
     @Column(name = "URL")
     private String url;
 
-
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "CONTEXT_ID")
     private AIContext aiContext;
-
 
 }

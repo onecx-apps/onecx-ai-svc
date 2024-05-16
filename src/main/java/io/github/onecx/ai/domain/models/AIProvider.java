@@ -1,6 +1,5 @@
 package io.github.onecx.ai.domain.models;
 
-
 import jakarta.persistence.*;
 
 import org.hibernate.annotations.TenantId;
@@ -42,7 +41,5 @@ public class AIProvider extends TraceableEntity {
 
     @Column(name = "APP_ID")
     private String appId;
-
-
 
 }

@@ -41,5 +41,4 @@ public class AIKnowledgeBase extends TraceableEntity {
     @OrderBy("creationDate ASC")
     private Set<AIContext> contexts = new HashSet<>();
 
-
 }

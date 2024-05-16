@@ -3,8 +3,6 @@ package io.github.onecx.ai.domain.daos;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityGraph;
 import jakarta.persistence.NoResultException;
-import jakarta.persistence.criteria.Join;
-import jakarta.persistence.criteria.Predicate;
 import jakarta.transaction.Transactional;
 
 import org.tkit.quarkus.jpa.daos.AbstractDAO;
@@ -50,7 +48,6 @@ public class AIProviderDAO extends AbstractDAO<AIProvider> {
             if (criteria.getName() != null && !criteria.getName().isBlank()) {
                 cq.where(cb.like(root.get(AIProvider_.name), QueryCriteriaUtil.wildcard(criteria.getName())));
             }
-
 
             if (criteria.getDescription() != null && !criteria.getDescription().isBlank()) {
                 cq.where(cb.like(root.get(AIProvider_.description), QueryCriteriaUtil.wildcard(criteria.getDescription())));

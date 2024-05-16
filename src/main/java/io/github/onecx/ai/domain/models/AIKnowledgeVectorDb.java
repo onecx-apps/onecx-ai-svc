@@ -36,5 +36,4 @@ public class AIKnowledgeVectorDb extends TraceableEntity {
     @JoinColumn(name = "CONTEXT_ID")
     private AIContext aiContext;
 
-
 }

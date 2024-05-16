@@ -28,13 +28,13 @@ public class AIContext extends TraceableEntity {
     private String tenantId;
 
     @Column(name = "APP_ID")
-    private String appId;    
+    private String appId;
 
     @Column(name = "NAME")
     private String name;
 
     @Column(name = "DESCRIPTION")
-    private String description;    
+    private String description;
 
     @Column(name = "LLM_SYSTEM_MESSAGE")
     private String llmSystemMessage;
@@ -53,7 +53,6 @@ public class AIContext extends TraceableEntity {
     @OneToMany(cascade = ALL, fetch = LAZY, mappedBy = "aiContext", orphanRemoval = true)
     @OrderBy("creationDate ASC")
     private Set<AIKnowledgeUrl> aiKnowledgeUrls = new HashSet<>();
-
 
     @OneToMany(cascade = ALL, fetch = LAZY, mappedBy = "aiContext", orphanRemoval = true)
     @OrderBy("creationDate ASC")

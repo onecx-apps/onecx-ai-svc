@@ -1,6 +1,5 @@
 package io.github.onecx.ai.domain.criteria;
 
-
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +18,6 @@ public class AIKnowledgeBaseSearchCriteria {
     private String tenandId;
 
     private String appId;
-
 
     private Integer pageNumber;
 

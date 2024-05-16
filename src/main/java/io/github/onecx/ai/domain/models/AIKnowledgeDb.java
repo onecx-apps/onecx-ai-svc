@@ -36,5 +36,4 @@ public class AIKnowledgeDb extends TraceableEntity {
     @JoinColumn(name = "CONTEXT_ID")
     private AIContext aiContext;
 
-
 }
