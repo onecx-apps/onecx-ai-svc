@@ -92,6 +92,8 @@ paths:
 
   /internal/ai/ai-knowledgebases/search:
     post:
+      tags:
+        - aiKnowledgeBaseInternal    
       summary: Find AI AIKnowledgeBase by Search Criteria
       parameters:
         - name: ai-knowledgebase-search-criteria
@@ -343,7 +345,7 @@ paths:
   /internal/ai/ai-knowledge-databases/{ai-knowledge-database-id}:
     put:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiKnowledgeBaseInternal
       summary: Update Knowledge Database
       parameters:
         - name: ai-knowledge-database-id
@@ -388,7 +390,7 @@ paths:
   /internal/ai/ai-contexts/search:
     post:
       tags:
-        - aiInternal
+        - aiKnowledgeBaseInternal
       summary: Find AI Context by Search Criteria
       requestBody:
         required: true
@@ -464,6 +466,8 @@ paths:
           description: No Content
   /internal/ai/ai-providers/search:
     post:
+      tags:
+        - aiKnowledgeBaseInternal     
       summary: Find AI Providers by Search Criteria
       parameters:
         - name: ai-provider-search-criteria
