@@ -72,6 +72,13 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Create an AI Context
+      parameters:
+        - name: ai-knowledgebase-id
+          in: path
+          description: The ID of the knowledge base.
+          required: true
+          schema:
+            type: string      
       requestBody:
         required: true
         content:
@@ -315,7 +322,14 @@ paths:
     post:
       tags:
         - aiKnowledgeBaseInternal    
-      summary: Create an AIKnowledgeDatabase to AIContext
+      summary: Creates a new AI knowledge database by context id.
+      parameters:
+        - name: ai-context-id
+          in: path
+          description: The ID of the AI context.
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -333,7 +347,8 @@ paths:
       summary: Update Knowledge Database
       parameters:
         - name: ai-knowledge-database-id
-          in: query
+          in: path
+          description: The ID of the AI knowledge database.
           required: true
           schema:
             type: string
@@ -359,11 +374,12 @@ paths:
         - aiKnowledgeBaseInternal    
       summary: Delete Knowledge Database from AI Context
       parameters:
-        - name: ai-context-id
-          in: query
+        - name: ai-knowledge-database-id
+          in: path
+          description: The ID of the AI knowledge database.
           required: true
           schema:
-            type: string
+            type: string      
       responses:
         '204':
           description: Knowledge Database deleted
@@ -517,10 +533,11 @@ paths:
       summary: Update AIKnowledgeUrl
       parameters:
         - name: ai-knowledge-url-id
-          in: query
+          in: path
+          description: The ID of the AI knowledge URL.
           required: true
           schema:
-            type: string      
+            type: string     
       requestBody:
         required: true
         content:
@@ -560,7 +577,8 @@ paths:
       summary: Update AIKnowlegeVectorDb
       parameters:
         - name: ai-knowledge-vdb-id
-          in: query
+          in: path
+          description: The ID of the AI knowledge vector database.
           required: true
           schema:
             type: string      
