@@ -15,6 +15,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Create an AI AIKnowledgeBase
+      operationId: createAIKnowledgeBase
       requestBody:
         required: true
         content:
@@ -30,6 +31,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Update an AI Knowledgebase
+      operationId: updateAIKnowledgeBase      
       parameters:
         - name: ai-knowledgebase-id
           in: path
@@ -57,6 +59,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Delete an AI AIKnowledgeBase
+      operationId: deleteAIKnowledgeBase      
       parameters:
         - name: ai-knowledgebase-id
           in: path
@@ -72,6 +75,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Create an AI Context
+      operationId: createAIContext
       parameters:
         - name: ai-knowledgebase-id
           in: path
@@ -95,6 +99,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Find AI AIKnowledgeBase by Search Criteria
+      operationId: findAIKnowlegeBaseBySearchCriteria
       parameters:
         - name: ai-knowledgebase-search-criteria
           in: query
@@ -113,11 +118,11 @@ paths:
 
 
   /internal/ai/ai-contexts/{ai-context-id}:
-
     delete:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Delete AIContext
+      operationId: deleteAIContext
       parameters:
         - name: ai-context-id
           in: path
@@ -132,6 +137,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Update an AI Context
+      operationId: updateAIContext      
       parameters:
         - name: ai-context-id
           in: path
@@ -161,6 +167,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Upload Documents into Document Management and create AI Knowledge Documents
+      operationId: uploadKnowledgeDocuments      
       parameters:
         - name: ai-context-id
           in: path
@@ -187,6 +194,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Add AI Provider to AI Context
+      operationId: addAIProvider
       parameters:
         - name: ai-context-id
           in: path
@@ -211,6 +219,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Remove AI Provider from AI Context
+      operationId: removeAIProvider      
       parameters:
         - name: ai-context-id
           in: path
@@ -232,6 +241,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Create Knowledge Vector database
+      operationId: createKnowledgeVectorDb
       parameters:
         - name: ai-context-id
           in: path
@@ -254,6 +264,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Create Knowledge URL
+      operationId: createKnowledgeUrl
       parameters:
         - name: ai-context-id
           in: path
@@ -274,7 +285,8 @@ paths:
     put:
       tags:
         - aiKnowledgeBaseInternal
-      summary: Embed AI Knowledge Documents
+      summary: Embedd AI Knowledge Documents into Vector Database
+      operationId: embedd KnowledgeDocuments
       parameters:
         - name: ai-context-id
           in: path
@@ -303,6 +315,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Create an AI Knowledge Document
+      operationId: createKnowledgeDocument
       parameters:
         - name: ai-context-id
           in: path
@@ -325,6 +338,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Creates a new AI knowledge database by context id.
+      operationId: createKnowledgeDb
       parameters:
         - name: ai-context-id
           in: path
@@ -347,6 +361,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Update Knowledge Database
+      operationId: updateKnowledgeDb
       parameters:
         - name: ai-knowledge-database-id
           in: path
@@ -375,6 +390,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Delete Knowledge Database from AI Context
+      operationId: deleteKnowledgeDb
       parameters:
         - name: ai-knowledge-database-id
           in: path
@@ -392,6 +408,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Find AI Context by Search Criteria
+      operationId: findAIContextBySearchCriteria
       requestBody:
         required: true
         content:
@@ -413,6 +430,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Create an AI Provider
+      operationId: createAIProvider
       requestBody:
         required: true
         content:
@@ -428,6 +446,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal
       summary: Update an AI Provider
+      operationId: updateAIProvider
       parameters:
         - name: ai-provider-id
           in: path
@@ -455,6 +474,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Delete an AI Provider
+      operationId: deleteAIProvider
       parameters:
         - name: ai-provider-id
           in: path
@@ -469,6 +489,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal     
       summary: Find AI Providers by Search Criteria
+      operationId: findAIProviderBySearchCriteria
       parameters:
         - name: ai-provider-search-criteria
           in: query
@@ -484,14 +505,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/AIProviderPageResult'
-
-
             
   /internal/ai/ai-knowledge-documents/{ai-knowledge-document-id}:
     put:
       tags:
         - aiKnowledgeBaseInternal
       summary: Update an AIKnowledgeDocument
+      operationId: updateKnowledgeDocument
       parameters:
         - name: ai-knowledge-document-id
           in: path
@@ -520,6 +540,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Delete AI Knowledge Document
+      operationId: deleteKnowledgeDocument
       parameters:
         - name: ai-knowledge-document-id
           in: path
@@ -530,11 +551,13 @@ paths:
         '204':
           description: AI Knowledge Document deleted
 
+
   /internal/ai/ai-knowledge-urls/{ai-knowledge-url-id}:
     put:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Update AIKnowledgeUrl
+      operationId: updateKnowledgeUrl
       parameters:
         - name: ai-knowledge-url-id
           in: path
@@ -563,6 +586,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Delete AIKnowledgeUrl
+      operationId: deleteKnowledgeUrl
       parameters:
         - name: ai-knowledge-url-id
           in: path
@@ -579,6 +603,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Update AIKnowlegeVectorDb
+      operationId: updateKnowledgeVectorDb
       parameters:
         - name: ai-knowledge-vdb-id
           in: path
@@ -607,6 +632,7 @@ paths:
       tags:
         - aiKnowledgeBaseInternal    
       summary: Delete AIKnowlegeVectorDb
+      operationId: deleteKnowledgeVectorDb      
       parameters:
         - name: ai-knowledge-vdb-id
           in: path
@@ -623,6 +649,7 @@ paths:
       tags:
         - aiInternal    
       summary: Generate AI Response
+      operationId: generate
       requestBody:
         required: true
         content:
@@ -649,6 +676,7 @@ paths:
       tags:
         - aiInternal    
       summary: Chat with AI
+      operationId: chat
       requestBody:
         required: true
         content:

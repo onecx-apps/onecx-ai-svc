@@ -41,7 +41,6 @@ import lombok.extern.slf4j.Slf4j;
 @Transactional(value = NOT_SUPPORTED)
 public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
 
-
     @Inject
     AIKnowledgeBaseDAO dao;
 
@@ -228,188 +227,183 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
     }
 
     @Override
-    public Response internalAiAiContextsAiContextIdAiKnowledgeDatabasesPost(String aiContextId,
+    public Response addAIProvider(String aiContextId, String aiProviderId, @Valid AIProviderDTO aiProviderDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addAIProvider'");
+    }
+
+    @Override
+    public Response createAIContext(String aiKnowledgebaseId, @Valid @NotNull AIContextDTO aiContextDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'createAIContext'");
+    }
+
+    @Override
+    public Response createAIKnowledgeBase(@Valid @NotNull AIKnowledgeBaseDTO aiKnowledgeBaseDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'createAIKnowledgeBase'");
+    }
+
+    @Override
+    public Response createAIProvider(@Valid @NotNull AIProviderDTO aiProviderDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'createAIProvider'");
+    }
+
+    @Override
+    public Response createKnowledgeDb(String aiContextId,
             @Valid @NotNull AIKnowledgeDatabaseDTO aiKnowledgeDatabaseDTO) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiContextsAiContextIdAiKnowledgeDatabasesPost'");
+        throw new UnsupportedOperationException("Unimplemented method 'createKnowledgeDb'");
     }
 
     @Override
-    public Response internalAiAiContextsAiContextIdAiKnowledgeDocumentsPost(String aiContextId,
+    public Response createKnowledgeDocument(String aiContextId,
             @Valid @NotNull AIKnowledgeDocumentDTO aiKnowledgeDocumentDTO) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiContextsAiContextIdAiKnowledgeDocumentsPost'");
+        throw new UnsupportedOperationException("Unimplemented method 'createKnowledgeDocument'");
     }
 
     @Override
-    public Response internalAiAiContextsAiContextIdAiKnowledgeDocumentsPut(String aiContextId,
+    public Response createKnowledgeUrl(String aiContextId, @Valid @NotNull AIKnowledgeUrlDTO aiKnowledgeUrlDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'createKnowledgeUrl'");
+    }
+
+    @Override
+    public Response createKnowledgeVectorDb(String aiContextId,
+            @Valid @NotNull AIKnowledgeVectorDbDTO aiKnowledgeVectorDbDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'createKnowledgeVectorDb'");
+    }
+
+    @Override
+    public Response deleteAIContext(String aiContextId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteAIContext'");
+    }
+
+    @Override
+    public Response deleteAIKnowledgeBase(String aiKnowledgebaseId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteAIKnowledgeBase'");
+    }
+
+    @Override
+    public Response deleteAIProvider(String aiProviderId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteAIProvider'");
+    }
+
+    @Override
+    public Response deleteKnowledgeDb(String aiKnowledgeDatabaseId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteKnowledgeDb'");
+    }
+
+    @Override
+    public Response deleteKnowledgeDocument(String aiKnowledgeDocumentId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteKnowledgeDocument'");
+    }
+
+    @Override
+    public Response deleteKnowledgeUrl(String aiKnowledgeUrlId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteKnowledgeUrl'");
+    }
+
+    @Override
+    public Response deleteKnowledgeVectorDb(String aiKnowledgeVdbId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'deleteKnowledgeVectorDb'");
+    }
+
+    @Override
+    public Response embeddKnowledgeDocuments(String aiContextId,
             @Valid @NotNull List<@Valid AIKnowledgeDocumentDTO> aiKnowledgeDocumentDTO) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiContextsAiContextIdAiKnowledgeDocumentsPut'");
+        throw new UnsupportedOperationException("Unimplemented method 'embeddKnowledgeDocuments'");
     }
 
     @Override
-    public Response internalAiAiContextsAiContextIdAiKnowledgeUrlsPost(String aiContextId,
-            @Valid @NotNull AIKnowledgeUrlDTO aiKnowledgeUrlDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiContextsAiContextIdAiKnowledgeUrlsPost'");
-    }
-
-    @Override
-    public Response internalAiAiContextsAiContextIdAiKnowledgeVdbPost(String aiContextId,
-            @Valid @NotNull AIKnowledgeVectorDbDTO aiKnowledgeVectorDbDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiContextsAiContextIdAiKnowledgeVdbPost'");
-    }
-
-    @Override
-    public Response internalAiAiContextsAiContextIdAiProvidersAiProviderIdDelete(String aiContextId,
-            String aiProviderId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiContextsAiContextIdAiProvidersAiProviderIdDelete'");
-    }
-
-    @Override
-    public Response internalAiAiContextsAiContextIdAiProvidersAiProviderIdPut(String aiContextId, String aiProviderId,
-            @Valid AIProviderDTO aiProviderDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiContextsAiContextIdAiProvidersAiProviderIdPut'");
-    }
-
-    @Override
-    public Response internalAiAiContextsAiContextIdDelete(String aiContextId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiContextsAiContextIdDelete'");
-    }
-
-    @Override
-    public Response internalAiAiContextsAiContextIdDocumentsPost(String aiContextId,
-            @Valid @NotNull InternalAiAiContextsAiContextIdDocumentsPostRequestDTO internalAiAiContextsAiContextIdDocumentsPostRequestDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiContextsAiContextIdDocumentsPost'");
-    }
-
-    @Override
-    public Response internalAiAiContextsAiContextIdPut(String aiContextId, @Valid @NotNull AIContextDTO aiContextDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiContextsAiContextIdPut'");
-    }
-
-    @Override
-    public Response internalAiAiContextsSearchPost(
+    public Response findAIContextBySearchCriteria(
             @Valid @NotNull AIContextSearchCriteriaDTO aiContextSearchCriteriaDTO) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiContextsSearchPost'");
+        throw new UnsupportedOperationException("Unimplemented method 'findAIContextBySearchCriteria'");
     }
 
     @Override
-    public Response internalAiAiKnowledgeDatabasesAiKnowledgeDatabaseIdDelete(String aiKnowledgeDatabaseId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgeDatabasesAiKnowledgeDatabaseIdDelete'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgeDatabasesAiKnowledgeDatabaseIdPut(String aiKnowledgeDatabaseId,
-            @Valid @NotNull AIKnowledgeDatabaseDTO aiKnowledgeDatabaseDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgeDatabasesAiKnowledgeDatabaseIdPut'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgeDocumentsAiKnowledgeDocumentIdDelete(String aiKnowledgeDocumentId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgeDocumentsAiKnowledgeDocumentIdDelete'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgeDocumentsAiKnowledgeDocumentIdPut(String aiKnowledgeDocumentId,
-            @Valid @NotNull AIKnowledgeDocumentDTO aiKnowledgeDocumentDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgeDocumentsAiKnowledgeDocumentIdPut'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgeUrlsAiKnowledgeUrlIdDelete(String aiKnowledgeUrlId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgeUrlsAiKnowledgeUrlIdDelete'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgeUrlsAiKnowledgeUrlIdPut(String aiKnowledgeUrlId,
-            @Valid @NotNull AIKnowledgeUrlDTO aiKnowledgeUrlDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgeUrlsAiKnowledgeUrlIdPut'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgeVdbsAiKnowledgeVdbIdDelete(String aiKnowledgeVdbId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgeVdbsAiKnowledgeVdbIdDelete'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgeVdbsAiKnowledgeVdbIdPut(String aiKnowledgeVdbId,
-            @Valid @NotNull AIKnowledgeVectorDbDTO aiKnowledgeVectorDbDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgeVdbsAiKnowledgeVdbIdPut'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgebasesAiKnowledgebaseIdAiContextsPost(String aiKnowledgebaseId,
-            @Valid @NotNull AIContextDTO aiContextDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgebasesAiKnowledgebaseIdAiContextsPost'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgebasesAiKnowledgebaseIdDelete(String aiKnowledgebaseId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgebasesAiKnowledgebaseIdDelete'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgebasesAiKnowledgebaseIdPut(String aiKnowledgebaseId,
-            @Valid @NotNull AIKnowledgeBaseDTO aiKnowledgeBaseDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgebasesAiKnowledgebaseIdPut'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgebasesPost(@Valid @NotNull AIKnowledgeBaseDTO aiKnowledgeBaseDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgebasesPost'");
-    }
-
-    @Override
-    public Response internalAiAiKnowledgebasesSearchPost(
+    public Response findAIKnowlegeBaseBySearchCriteria(
             @NotNull AIKnowledgeBaseSearchCriteriaDTO aiKnowledgebaseSearchCriteria) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiKnowledgebasesSearchPost'");
+        throw new UnsupportedOperationException("Unimplemented method 'findAIKnowlegeBaseBySearchCriteria'");
     }
 
     @Override
-    public Response internalAiAiProvidersAiProviderIdDelete(String aiProviderId) {
+    public Response findAIProviderBySearchCriteria(@NotNull AIProviderSearchCriteriaDTO aiProviderSearchCriteria) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiProvidersAiProviderIdDelete'");
+        throw new UnsupportedOperationException("Unimplemented method 'findAIProviderBySearchCriteria'");
     }
 
     @Override
-    public Response internalAiAiProvidersAiProviderIdPut(String aiProviderId,
-            @Valid @NotNull AIProviderDTO aiProviderDTO) {
+    public Response removeAIProvider(String aiContextId, String aiProviderId) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiProvidersAiProviderIdPut'");
+        throw new UnsupportedOperationException("Unimplemented method 'removeAIProvider'");
     }
 
     @Override
-    public Response internalAiAiProvidersPost(@Valid @NotNull AIProviderDTO aiProviderDTO) {
+    public Response updateAIContext(String aiContextId, @Valid @NotNull AIContextDTO aiContextDTO) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiProvidersPost'");
+        throw new UnsupportedOperationException("Unimplemented method 'updateAIContext'");
     }
 
     @Override
-    public Response internalAiAiProvidersSearchPost(@NotNull AIProviderSearchCriteriaDTO aiProviderSearchCriteria) {
+    public Response updateAIKnowledgeBase(String aiKnowledgebaseId,
+            @Valid @NotNull AIKnowledgeBaseDTO aiKnowledgeBaseDTO) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'internalAiAiProvidersSearchPost'");
+        throw new UnsupportedOperationException("Unimplemented method 'updateAIKnowledgeBase'");
     }
+
+    @Override
+    public Response updateAIProvider(String aiProviderId, @Valid @NotNull AIProviderDTO aiProviderDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateAIProvider'");
+    }
+
+    @Override
+    public Response updateKnowledgeDb(String aiKnowledgeDatabaseId,
+            @Valid @NotNull AIKnowledgeDatabaseDTO aiKnowledgeDatabaseDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateKnowledgeDb'");
+    }
+
+    @Override
+    public Response updateKnowledgeDocument(String aiKnowledgeDocumentId,
+            @Valid @NotNull AIKnowledgeDocumentDTO aiKnowledgeDocumentDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateKnowledgeDocument'");
+    }
+
+    @Override
+    public Response updateKnowledgeUrl(String aiKnowledgeUrlId, @Valid @NotNull AIKnowledgeUrlDTO aiKnowledgeUrlDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateKnowledgeUrl'");
+    }
+
+    @Override
+    public Response updateKnowledgeVectorDb(String aiKnowledgeVdbId,
+            @Valid @NotNull AIKnowledgeVectorDbDTO aiKnowledgeVectorDbDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'updateKnowledgeVectorDb'");
+    }
+
+    @Override
+    public Response uploadKnowledgeDocuments(String aiContextId,
+            @Valid @NotNull UploadKnowledgeDocumentsRequestDTO uploadKnowledgeDocumentsRequestDTO) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'uploadKnowledgeDocuments'");
+    }
+
 
 }
