@@ -1,0 +1,148 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="dev (generated)" id="1718002182423-1">
+        <createTable tableName="ai_knowledge_document">
+            <column name="optlock" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="modificationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="context_id" type="VARCHAR(255)"/>
+            <column name="doc_ref_id" type="VARCHAR(255)"/>
+            <column name="guid" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ai_knowledge_document_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="tenant_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creationuser" type="VARCHAR(255)"/>
+            <column name="modificationuser" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dev (generated)" id="1718002182423-2">
+        <createTable tableName="ai_knowledge_vdb">
+            <column name="optlock" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="modificationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="context_id" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="guid" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ai_knowledge_vdb_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="tenant_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vdb" type="VARCHAR(255)"/>
+            <column name="vdb_collection" type="VARCHAR(255)"/>
+            <column name="creationuser" type="VARCHAR(255)"/>
+            <column name="modificationuser" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dev (generated)" id="1718002182423-3">
+        <addUniqueConstraint columnNames="context_id" constraintName="ai_knowledge_vdb_context_id_key" tableName="ai_knowledge_vdb"/>
+    </changeSet>
+    <changeSet author="dev (generated)" id="1718002182423-4">
+        <createTable tableName="ai_context">
+            <column name="optlock" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="modificationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="app_id" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="guid" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ai_context_pkey"/>
+            </column>
+            <column name="kb_id" type="VARCHAR(255)"/>
+            <column name="llm_system_message" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="tenant_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creationuser" type="VARCHAR(255)"/>
+            <column name="modificationuser" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dev (generated)" id="1718002182423-5">
+        <createTable tableName="ai_kb">
+            <column name="optlock" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="modificationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="app_id" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="guid" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ai_kb_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="tenant_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creationuser" type="VARCHAR(255)"/>
+            <column name="modificationuser" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dev (generated)" id="1718002182423-6">
+        <createTable tableName="ai_knowledge_url">
+            <column name="optlock" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="modificationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="context_id" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="guid" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ai_knowledge_url_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="tenant_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url" type="VARCHAR(255)"/>
+            <column name="creationuser" type="VARCHAR(255)"/>
+            <column name="modificationuser" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dev (generated)" id="1718002182423-7">
+        <createTable tableName="ai_provider">
+            <column name="optlock" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="modificationdate" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="api_key" type="VARCHAR(255)"/>
+            <column name="app_id" type="VARCHAR(255)"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="guid" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ai_provider_pkey"/>
+            </column>
+            <column name="llm_url" type="VARCHAR(255)"/>
+            <column name="model_name" type="VARCHAR(255)"/>
+            <column name="model_version" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="tenant_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creationuser" type="VARCHAR(255)"/>
+            <column name="modificationuser" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="dev (generated)" id="1718002182423-8">
+        <addForeignKeyConstraint baseColumnNames="context_id" baseTableName="ai_knowledge_url" constraintName="fk6pd4c39euw8sy2x5sg4elij0u" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="guid" referencedTableName="ai_context" validate="true"/>
+    </changeSet>
+    <changeSet author="dev (generated)" id="1718002182423-9">
+        <addForeignKeyConstraint baseColumnNames="kb_id" baseTableName="ai_context" constraintName="fkpd073o9e9e3n4l7nhu238td20" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="guid" referencedTableName="ai_kb" validate="true"/>
+    </changeSet>
+    <changeSet author="dev (generated)" id="1718002182423-10">
+        <addForeignKeyConstraint baseColumnNames="context_id" baseTableName="ai_knowledge_document" constraintName="fkpf7peog2p8liv1w1elikej22m" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="guid" referencedTableName="ai_context" validate="true"/>
+    </changeSet>
+    <changeSet author="dev (generated)" id="1718002182423-11">
+        <addForeignKeyConstraint baseColumnNames="context_id" baseTableName="ai_knowledge_vdb" constraintName="fkpprcmnadjedlukjcs1ck80fp5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="guid" referencedTableName="ai_context" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
