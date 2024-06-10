@@ -5,11 +5,11 @@ import jakarta.transaction.Transactional;
 
 import org.tkit.quarkus.jpa.daos.AbstractDAO;
 
-import io.github.onecx.ai.domain.models.AIKnowledgeDb;
+import io.github.onecx.ai.domain.models.AIKnowledgeDatabase;
 
 @ApplicationScoped
 @Transactional(Transactional.TxType.NOT_SUPPORTED)
-public class AIKnowledgeDbDAO extends AbstractDAO<AIKnowledgeDb> {
+public class AIKnowledgeDatabaseDAO extends AbstractDAO<AIKnowledgeDatabase> {
 
     public enum ErrorKeys {
 

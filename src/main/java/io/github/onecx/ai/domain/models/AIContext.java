@@ -56,6 +56,6 @@ public class AIContext extends TraceableEntity {
 
     @OneToMany(cascade = ALL, fetch = LAZY, mappedBy = "aiContext", orphanRemoval = true)
     @OrderBy("creationDate ASC")
-    private Set<AIKnowledgeDb> aiKnowledgeDbs = new HashSet<>();
+    private Set<AIKnowledgeDatabase> aiKnowledgeDbs = new HashSet<>();
 
 }

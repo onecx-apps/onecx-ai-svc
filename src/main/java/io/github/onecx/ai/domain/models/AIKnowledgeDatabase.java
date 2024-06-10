@@ -13,8 +13,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "AI_KNOWLEDGE_DB")
-public class AIKnowledgeDb extends TraceableEntity {
+@Table(name = "AI_KNOWLEDGE_DATABASE")
+public class AIKnowledgeDatabase extends TraceableEntity {
 
     @TenantId
     @Column(name = "TENANT_ID")
@@ -29,8 +29,8 @@ public class AIKnowledgeDb extends TraceableEntity {
     @Column(name = "DB")
     private String db;
 
-    @Column(name = "USER")
-    private String user;
+    @Column(name = "USR")
+    private String usr;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "CONTEXT_ID")
