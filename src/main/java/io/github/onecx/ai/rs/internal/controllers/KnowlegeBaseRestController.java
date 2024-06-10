@@ -161,13 +161,14 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
 
     @Override
     public Response findAIKnowlegeBaseBySearchCriteria(
-            @NotNull AIKnowledgeBaseSearchCriteriaDTO aiKnowledgebaseSearchCriteria) {
+            @Valid @NotNull AIKnowledgeBaseSearchCriteriaDTO aiKnowledgeBaseSearchCriteriaDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAIKnowlegeBaseBySearchCriteria'");
     }
 
     @Override
-    public Response findAIProviderBySearchCriteria(@NotNull AIProviderSearchCriteriaDTO aiProviderSearchCriteria) {
+    public Response findAIProviderBySearchCriteria(
+            @Valid @NotNull AIProviderSearchCriteriaDTO aiProviderSearchCriteriaDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAIProviderBySearchCriteria'");
     }

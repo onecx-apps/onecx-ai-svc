@@ -100,12 +100,12 @@ paths:
         - aiKnowledgeBaseInternal    
       summary: Find AI AIKnowledgeBase by Search Criteria
       operationId: findAIKnowlegeBaseBySearchCriteria
-      parameters:
-        - name: ai-knowledgebase-search-criteria
-          in: query
-          required: true
-          schema:
-            $ref: '#/components/schemas/AIKnowledgeBaseSearchCriteria'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIKnowledgeBaseSearchCriteria'
       responses:
         '200':
           description: OK
@@ -490,12 +490,12 @@ paths:
         - aiKnowledgeBaseInternal     
       summary: Find AI Providers by Search Criteria
       operationId: findAIProviderBySearchCriteria
-      parameters:
-        - name: ai-provider-search-criteria
-          in: query
-          required: true
-          schema:
-            $ref: '#/components/schemas/AIProviderSearchCriteria'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AIProviderSearchCriteria'
       responses:
         '200':
           description: OK
