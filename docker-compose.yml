@@ -1,6 +1,6 @@
 services:
   postgresdb:
-    image: postgres
+    image: bitnami/postgresql:12
     environment:
       POSTGRES_PASSWORD: admin
       # POSTGRES_DB: postgres

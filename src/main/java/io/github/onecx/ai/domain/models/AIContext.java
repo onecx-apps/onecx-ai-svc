@@ -1,6 +1,5 @@
 package io.github.onecx.ai.domain.models;
 
-import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.FetchType.LAZY;
 
 import java.util.HashSet;
@@ -43,19 +42,19 @@ public class AIContext extends TraceableEntity {
     @JoinColumn(name = "KB_ID")
     private AIKnowledgeBase knowledgebase;
 
-    @OneToMany(cascade = ALL, fetch = LAZY, mappedBy = "aiContext", orphanRemoval = true)
-    @OrderBy("creationDate ASC")
-    private Set<AIKnowledgeDocument> aiKnowledgeDocuments = new HashSet<>();
-
     @OneToOne(mappedBy = "aiContext", cascade = CascadeType.ALL)
     private AIKnowledgeVectorDb aiKnowledgeVectorDb;
 
-    @OneToMany(cascade = ALL, fetch = LAZY, mappedBy = "aiContext", orphanRemoval = true)
+    @OneToMany(cascade = { CascadeType.REMOVE }, fetch = LAZY, mappedBy = "aiContext", orphanRemoval = true)
     @OrderBy("creationDate ASC")
     private Set<AIKnowledgeUrl> aiKnowledgeUrls = new HashSet<>();
 
-    @OneToMany(cascade = ALL, fetch = LAZY, mappedBy = "aiContext", orphanRemoval = true)
+    @OneToMany(cascade = { CascadeType.REMOVE }, fetch = LAZY, mappedBy = "aiContext", orphanRemoval = true)
     @OrderBy("creationDate ASC")
     private Set<AIKnowledgeDatabase> aiKnowledgeDbs = new HashSet<>();
+
+    @OneToMany(cascade = { CascadeType.REMOVE }, fetch = LAZY, mappedBy = "aiContext", orphanRemoval = true)
+    @OrderBy("creationDate ASC")
+    private Set<AIKnowledgeDocument> aiKnowledgeDocuments = new HashSet<>();
 
 }

@@ -1,6 +1,6 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-    <changeSet author="dev (generated)" id="1718007487474-1">
+    <changeSet author="dev (generated)" id="1718013285893-1">
         <createTable tableName="ai_knowledge_document">
             <column name="optlock" type="INTEGER">
                 <constraints nullable="false"/>
@@ -20,8 +20,6 @@
             <column name="creationuser" type="VARCHAR(255)"/>
             <column name="modificationuser" type="VARCHAR(255)"/>
         </createTable>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-2">
         <createTable tableName="ai_knowledge_vdb">
             <column name="optlock" type="INTEGER">
                 <constraints nullable="false"/>
@@ -42,11 +40,7 @@
             <column name="creationuser" type="VARCHAR(255)"/>
             <column name="modificationuser" type="VARCHAR(255)"/>
         </createTable>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-3">
         <addUniqueConstraint columnNames="context_id" constraintName="ai_knowledge_vdb_context_id_key" tableName="ai_knowledge_vdb"/>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-4">
         <createTable tableName="ai_context">
             <column name="optlock" type="INTEGER">
                 <constraints nullable="false"/>
@@ -67,8 +61,6 @@
             <column name="creationuser" type="VARCHAR(255)"/>
             <column name="modificationuser" type="VARCHAR(255)"/>
         </createTable>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-5">
         <createTable tableName="ai_kb">
             <column name="optlock" type="INTEGER">
                 <constraints nullable="false"/>
@@ -87,8 +79,6 @@
             <column name="creationuser" type="VARCHAR(255)"/>
             <column name="modificationuser" type="VARCHAR(255)"/>
         </createTable>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-6">
         <createTable tableName="ai_knowledge_database">
             <column name="optlock" type="INTEGER">
                 <constraints nullable="false"/>
@@ -109,8 +99,6 @@
             <column name="creationuser" type="VARCHAR(255)"/>
             <column name="modificationuser" type="VARCHAR(255)"/>
         </createTable>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-7">
         <createTable tableName="ai_knowledge_url">
             <column name="optlock" type="INTEGER">
                 <constraints nullable="false"/>
@@ -130,9 +118,7 @@
             <column name="creationuser" type="VARCHAR(255)"/>
             <column name="modificationuser" type="VARCHAR(255)"/>
         </createTable>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-8">
-        <createTable tableName="ai_provider">
+       <createTable tableName="ai_provider">
             <column name="optlock" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
@@ -154,20 +140,10 @@
             <column name="creationuser" type="VARCHAR(255)"/>
             <column name="modificationuser" type="VARCHAR(255)"/>
         </createTable>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-9">
         <addForeignKeyConstraint baseColumnNames="context_id" baseTableName="ai_knowledge_url" constraintName="fk6pd4c39euw8sy2x5sg4elij0u" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="guid" referencedTableName="ai_context" validate="true"/>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-10">
         <addForeignKeyConstraint baseColumnNames="context_id" baseTableName="ai_knowledge_database" constraintName="fkoodghqtdfoeleqfkaji5cac48" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="guid" referencedTableName="ai_context" validate="true"/>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-11">
         <addForeignKeyConstraint baseColumnNames="kb_id" baseTableName="ai_context" constraintName="fkpd073o9e9e3n4l7nhu238td20" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="guid" referencedTableName="ai_kb" validate="true"/>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-12">
         <addForeignKeyConstraint baseColumnNames="context_id" baseTableName="ai_knowledge_document" constraintName="fkpf7peog2p8liv1w1elikej22m" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="guid" referencedTableName="ai_context" validate="true"/>
-    </changeSet>
-    <changeSet author="dev (generated)" id="1718007487474-13">
         <addForeignKeyConstraint baseColumnNames="context_id" baseTableName="ai_knowledge_vdb" constraintName="fkpprcmnadjedlukjcs1ck80fp5" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="guid" referencedTableName="ai_context" validate="true"/>
     </changeSet>
 </databaseChangeLog>
