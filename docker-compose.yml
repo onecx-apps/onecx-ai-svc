@@ -19,6 +19,8 @@ services:
   onecx-chat-svc:
 #    image: ghcr.io/onecx-apps/onecx-ai-quarkus-svc:0.0.0-rc.1
     image: localhost/onecx-ai-quarkus-svc:999-SNAPSHOT
+    ports:
+      - "8080:8080"
     environment:
       QUARKUS_DATASOURCE_USERNAME: onecx_ai   
       QUARKUS_DATASOURCE_PASSWORD: onecx_ai      

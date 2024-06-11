@@ -21,7 +21,11 @@ import org.tkit.quarkus.jpa.exceptions.ConstraintException;
 import gen.io.github.onecx.ai.rs.internal.AiKnowledgeBaseInternalApi;
 import gen.io.github.onecx.ai.rs.internal.model.*;
 import io.github.onecx.ai.domain.daos.AIKnowledgeBaseDAO;
+import io.github.onecx.ai.domain.daos.AIKnowledgeDocumentDAO;
+import io.github.onecx.ai.domain.models.AIKnowledgeBase;
+import io.github.onecx.ai.domain.models.AIKnowledgeDocument;
 import io.github.onecx.ai.rs.internal.mappers.ExceptionMapper;
+import io.github.onecx.ai.rs.internal.mappers.KnowledgeBaseMapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -33,7 +37,16 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
     AIKnowledgeBaseDAO dao;
 
     @Inject
+    AIKnowledgeDocumentDAO aiKnowledgeDocumentDAO;
+
+    @Inject
+    AIKnowledgeBaseDAO aiKnowledgeBaseDAO;
+
+    @Inject
     ExceptionMapper exceptionMapper;
+
+    @Inject
+    KnowledgeBaseMapper knowledgeBaseMapper;
 
     @Context
     UriInfo uriInfo;
@@ -60,14 +73,17 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
 
     @Override
     public Response createAIContext(String aiKnowledgebaseId, @Valid @NotNull AIContextDTO aiContextDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createAIContext'");
+
+        return Response.ok().build();
     }
 
     @Override
     public Response createAIKnowledgeBase(@Valid @NotNull AIKnowledgeBaseDTO aiKnowledgeBaseDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createAIKnowledgeBase'");
+        AIKnowledgeBase aiKnowledgeBase = knowledgeBaseMapper.createAIKnowledgeBase(aiKnowledgeBaseDTO);
+
+        aiKnowledgeBase.setTenantId("123");
+        aiKnowledgeBaseDAO.create(aiKnowledgeBase);
+        return Response.ok().build();
     }
 
     @Override
@@ -86,8 +102,10 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
     @Override
     public Response createKnowledgeDocument(String aiContextId,
             @Valid @NotNull AIKnowledgeDocumentDTO aiKnowledgeDocumentDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createKnowledgeDocument'");
+        AIKnowledgeDocument aiKnowledgeDocument = knowledgeBaseMapper.createAIKnowledgeDocument(aiKnowledgeDocumentDTO);
+        aiKnowledgeDocument.setTenantId("testTenant");
+        //aiKnowledgeDocumentDAO.create(aiKnowledgeDocument);
+        return Response.ok(aiKnowledgeDocument).build();
     }
 
     @Override

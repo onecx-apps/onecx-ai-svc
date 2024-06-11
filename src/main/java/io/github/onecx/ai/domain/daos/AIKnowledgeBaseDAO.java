@@ -79,6 +79,14 @@ public class AIKnowledgeBaseDAO extends AbstractDAO<AIKnowledgeBase> {
         }
     }
 
+    public void create() {
+        try {
+
+        } catch (Exception e) {
+            throw new DAOException(ErrorKeys.FIND_ENTITY_BY_ID_FAILED, e, entityName);
+        }
+    }
+
     public enum ErrorKeys {
 
         FIND_ENTITY_BY_ID_FAILED,
