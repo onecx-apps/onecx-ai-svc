@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+	<!-- Knowledgebase -->
+	<AI_KB guid="kb-11-111" optlock="0" name="knowledgebase1" description="knowledgebase_description_1" app_id="appId" tenant_id="default" creationuser="user1"/>
+	<AI_KB guid="kb-22-222" optlock="0" name="knowledgebase2" description="knowledgebase_description_2" app_id="appId"  tenant_id="default" creationuser="user1" />
+	<AI_KB guid="kb-DELETE_1" optlock="0" name="knowledgebase3" description="knowledgebase_description_3" app_id="appId" tenant_id="default" creationuser="user2"/>
+
+
+
+
+	<!-- TENANT -->
+	<!-- Knowledgebase -->
+	<AI_KB guid="t-kb-11-111" optlock="0" name="knowledgebase1" description="knowledgebase_description_1" app_id="appId" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_KB guid="t-kb-22-222" optlock="0" name="knowledgebase2" description="knowledgebase_description_2" app_id="appId" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_KB guid="t-kb-DELETE_1" optlock="0" name="knowledgebase3" description="knowledgebase_description_3" app_id="appId" tenant_id="tenant-200" creationuser="user2"/>
+
+
+</dataset>

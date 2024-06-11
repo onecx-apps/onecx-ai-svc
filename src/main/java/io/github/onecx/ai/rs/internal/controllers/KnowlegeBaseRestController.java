@@ -19,9 +19,22 @@ import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
 import org.tkit.quarkus.jpa.exceptions.ConstraintException;
 
 import gen.io.github.onecx.ai.rs.internal.AiKnowledgeBaseInternalApi;
-import gen.io.github.onecx.ai.rs.internal.model.*;
+import gen.io.github.onecx.ai.rs.internal.model.AIContextDTO;
+import gen.io.github.onecx.ai.rs.internal.model.AIContextSearchCriteriaDTO;
+import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeBaseSearchCriteriaDTO;
+import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeDatabaseDTO;
+import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeDocumentDTO;
+import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeUrlDTO;
+import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeVectorDbDTO;
+import gen.io.github.onecx.ai.rs.internal.model.AIProviderDTO;
+import gen.io.github.onecx.ai.rs.internal.model.AIProviderSearchCriteriaDTO;
+import gen.io.github.onecx.ai.rs.internal.model.CreateAIKnowledgeBaseRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.ProblemDetailResponseDTO;
+import gen.io.github.onecx.ai.rs.internal.model.UpdateAIKnowledgeBaseRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.UploadKnowledgeDocumentsRequestDTO;
 import io.github.onecx.ai.domain.daos.AIKnowledgeBaseDAO;
 import io.github.onecx.ai.rs.internal.mappers.ExceptionMapper;
+import io.github.onecx.ai.rs.internal.mappers.KnowledgeBaseMapper;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -37,6 +50,9 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
 
     @Context
     UriInfo uriInfo;
+
+    @Inject
+    KnowledgeBaseMapper mapper;
 
     @ServerExceptionMapper
     public RestResponse<ProblemDetailResponseDTO> exception(ConstraintException ex) {
@@ -65,9 +81,15 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
     }
 
     @Override
-    public Response createAIKnowledgeBase(@Valid @NotNull AIKnowledgeBaseDTO aiKnowledgeBaseDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createAIKnowledgeBase'");
+    public Response createAIKnowledgeBase(CreateAIKnowledgeBaseRequestDTO aiKnowledgeBaseDTO) {
+
+        var kb = mapper.createAIKnowledgeBase(aiKnowledgeBaseDTO);
+        kb = dao.create(kb);
+
+        return Response
+                .created(uriInfo.getAbsolutePathBuilder().path(kb.getId()).build())
+                .entity(mapper.mapKnowledgebase(kb))
+                .build();
     }
 
     @Override
@@ -187,7 +209,7 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
 
     @Override
     public Response updateAIKnowledgeBase(String aiKnowledgebaseId,
-            @Valid @NotNull AIKnowledgeBaseDTO aiKnowledgeBaseDTO) {
+            @Valid @NotNull UpdateAIKnowledgeBaseRequestDTO aiKnowledgeBaseDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateAIKnowledgeBase'");
     }

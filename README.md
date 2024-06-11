@@ -18,3 +18,9 @@ stop containers optional with -volumes to clean data
 ```
 docker-compose down -volumes
 ```
+
+
+debugging
+```
+mvn clean install -Dmaven.surefire.debug
+```

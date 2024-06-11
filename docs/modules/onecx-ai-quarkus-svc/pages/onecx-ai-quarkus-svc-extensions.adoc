@@ -8,6 +8,24 @@ h| Documentation
 h| Configuration
 h| Version
 
+| onecx-core
+
+| https://onecx.github.io/docs/onecx-quarkus/current/onecx-quarkus/onecx-core.html[Link]
+| 
+| 0.18.0
+
+| onecx-tenant
+
+| https://onecx.github.io/docs/onecx-quarkus/current/onecx-quarkus/onecx-tenant.html[Link]
+| https://github.com/onecx/onecx-quarkus/blob/0.18.0/docs/modules/onecx-quarkus/pages/includes/onecx-tenant.adoc[Link]
+| 0.18.0
+
+| tkit-quarkus-jpa-tenant
+
+| https://1000kit.github.io/tkit-quarkus/current/tkit-quarkus/tkit-quarkus-jpa-tenant.html[Link]
+| https://github.com/1000kit/tkit-quarkus/blob/2.23.0/docs/modules/tkit-quarkus/pages/includes/tkit-quarkus-jpa-tenant.adoc[Link]
+| 2.23.0
+
 | tkit-quarkus-jpa
 
 | https://1000kit.github.io/tkit-quarkus/current/tkit-quarkus/tkit-quarkus-jpa.html[Link]
@@ -109,12 +127,6 @@ h| Version
 | https://quarkus.io/guides/opentelemetry[Link]
 | https://github.com/quarkusio/quarkusio.github.io/blob/develop/_generated-doc/latest/config/quarkus-opentelemetry.adoc[Link]
 | 3.9.4
-
-| onecx-core
-
-| https://onecx.github.io/docs/onecx-quarkus/current/onecx-quarkus/onecx-core.html[Link]
-| 
-| 0.18.0
 
 | quarkus-container-image-docker
 

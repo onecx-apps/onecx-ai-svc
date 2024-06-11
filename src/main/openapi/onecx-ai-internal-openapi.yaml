@@ -21,10 +21,26 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIKnowledgeBase'
+              $ref: '#/components/schemas/CreateAIKnowledgeBaseRequest'
       responses:
-        '201':
-          description: Created
+        "201":
+          description: New KnowledgeBase created
+          headers:
+            Location:
+              required: true
+              schema:
+                type: string
+                format: url
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKnowledgeBase'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
 
   /internal/ai/ai-knowledgebases/{ai-knowledgebase-id}:
     put:
@@ -43,7 +59,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIKnowledgeBase'
+              $ref: '#/components/schemas/UpdateAIKnowledgeBaseRequest'
       responses:
         '204':
           description: AI AIKnowledgeBase updated
@@ -90,8 +106,24 @@ paths:
             schema:
               $ref: '#/components/schemas/AIContext'
       responses:
-        '201':
-          description: Created
+        "201":
+          description: New AIContext created
+          headers:
+            Location:
+              required: true
+              schema:
+                type: string
+                format: url
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIContext'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
 
 
   /internal/ai/ai-knowledgebases/search:
@@ -255,8 +287,24 @@ paths:
             schema:
               $ref: '#/components/schemas/AIKnowledgeVectorDb'
       responses:
-        '201':
-          description: Created
+        "201":
+          description: New AIKnowledgeVectorDb created
+          headers:
+            Location:
+              required: true
+              schema:
+                type: string
+                format: url
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKnowledgeVectorDb'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
 
 
   /internal/ai/ai-contexts/{ai-context-id}/ai-knowledge-urls:
@@ -278,8 +326,24 @@ paths:
             schema:
               $ref: '#/components/schemas/AIKnowledgeUrl'
       responses:
-        '201':
-          description: Created
+        "201":
+          description: New AIKnowledgeUrl created
+          headers:
+            Location:
+              required: true
+              schema:
+                type: string
+                format: url
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKnowledgeUrl'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
 
   /internal/ai/ai-contexts/{ai-context-id}/ai-knowledge-documents:
     put:
@@ -329,8 +393,24 @@ paths:
             schema:
               $ref: '#/components/schemas/AIKnowledgeDocument'
       responses:
-        '201':
-          description: Created
+        "201":
+          description: New AIKnowledgeDocument created
+          headers:
+            Location:
+              required: true
+              schema:
+                type: string
+                format: url
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKnowledgeDocument'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
   
 
   /internal/ai/ai-contexts/{ai-context-id}/ai-knowledge-databases:
@@ -353,8 +433,24 @@ paths:
             schema:
               $ref: '#/components/schemas/AIKnowledgeDatabase'
       responses:
-        '201':
-          description: Created
+        "201":
+          description: New AIKnowledgeDatabase created
+          headers:
+            Location:
+              required: true
+              schema:
+                type: string
+                format: url
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKnowledgeDatabase'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
 
   /internal/ai/ai-knowledge-databases/{ai-knowledge-database-id}:
     put:
@@ -438,8 +534,24 @@ paths:
             schema:
               $ref: '#/components/schemas/AIProvider'
       responses:
-        '201':
-          description: Created
+        "201":
+          description: New AIProvider created
+          headers:
+            Location:
+              required: true
+              schema:
+                type: string
+                format: url
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIProvider'
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetailResponse'
 
   /internal/ai/ai-providers/{ai-provider-id}:
     put:
@@ -844,10 +956,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AIKnowledgeBase'
+    CreateAIKnowledgeBaseRequest:
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        appId:
+          type: string
+        contexts:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIContext'
+    UpdateAIKnowledgeBaseRequest:
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        appId:
+          type: string
+        contexts:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIContext'            
     AIKnowledgeBase:
-      required:
-        - type
-      type: object
       properties:
         version:
           format: int32
