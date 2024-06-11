@@ -46,6 +46,6 @@ public abstract class KnowledgeBaseMapper {
     @Mapping(target = "version", source = "modificationCount")
     @Mapping(target = "removeContextsItem", ignore = true)
     @Mapping(target = "contexts", ignore = true)
-    public abstract AIKnowledgeBaseDTO mapKnowledgebase(AIKnowledgeBase knowledgeBase);
+    public abstract AIKnowledgeBaseDTO map(AIKnowledgeBase knowledgeBase);
 
 }

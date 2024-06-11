@@ -19,18 +19,26 @@ import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
 import org.tkit.quarkus.jpa.exceptions.ConstraintException;
 
 import gen.io.github.onecx.ai.rs.internal.AiKnowledgeBaseInternalApi;
-import gen.io.github.onecx.ai.rs.internal.model.AIContextDTO;
 import gen.io.github.onecx.ai.rs.internal.model.AIContextSearchCriteriaDTO;
 import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeBaseSearchCriteriaDTO;
-import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeDatabaseDTO;
 import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeDocumentDTO;
-import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeUrlDTO;
-import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeVectorDbDTO;
 import gen.io.github.onecx.ai.rs.internal.model.AIProviderDTO;
 import gen.io.github.onecx.ai.rs.internal.model.AIProviderSearchCriteriaDTO;
+import gen.io.github.onecx.ai.rs.internal.model.CreateAIContextRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.CreateAIKnowledgeBaseRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.CreateAIKnowledgeDatabaseRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.CreateAIKnowledgeDocumentRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.CreateAIKnowledgeUrlRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.CreateAIKnowledgeVectorDbRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.CreateAIProviderRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.ProblemDetailResponseDTO;
+import gen.io.github.onecx.ai.rs.internal.model.UpdateAIContextRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.UpdateAIKnowledgeBaseRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.UpdateAIKnowledgeDatabaseRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.UpdateAIKnowledgeDocumentRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.UpdateAIKnowledgeUrlRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.UpdateAIKnowledgeVectorDbRequestDTO;
+import gen.io.github.onecx.ai.rs.internal.model.UpdateAIProviderRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.UploadKnowledgeDocumentsRequestDTO;
 import io.github.onecx.ai.domain.daos.AIKnowledgeBaseDAO;
 import io.github.onecx.ai.rs.internal.mappers.ExceptionMapper;
@@ -75,7 +83,7 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
     }
 
     @Override
-    public Response createAIContext(String aiKnowledgebaseId, @Valid @NotNull AIContextDTO aiContextDTO) {
+    public Response createAIContext(String aiKnowledgebaseId, CreateAIContextRequestDTO aiContextDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'createAIContext'");
     }
@@ -88,39 +96,39 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
 
         return Response
                 .created(uriInfo.getAbsolutePathBuilder().path(kb.getId()).build())
-                .entity(mapper.mapKnowledgebase(kb))
+                .entity(mapper.map(kb))
                 .build();
     }
 
     @Override
-    public Response createAIProvider(@Valid @NotNull AIProviderDTO aiProviderDTO) {
+    public Response createAIProvider(CreateAIProviderRequestDTO aiProviderDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'createAIProvider'");
     }
 
     @Override
     public Response createKnowledgeDb(String aiContextId,
-            @Valid @NotNull AIKnowledgeDatabaseDTO aiKnowledgeDatabaseDTO) {
+            CreateAIKnowledgeDatabaseRequestDTO aiKnowledgeDatabaseDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'createKnowledgeDb'");
     }
 
     @Override
     public Response createKnowledgeDocument(String aiContextId,
-            @Valid @NotNull AIKnowledgeDocumentDTO aiKnowledgeDocumentDTO) {
+            CreateAIKnowledgeDocumentRequestDTO aiKnowledgeDocumentDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'createKnowledgeDocument'");
     }
 
     @Override
-    public Response createKnowledgeUrl(String aiContextId, @Valid @NotNull AIKnowledgeUrlDTO aiKnowledgeUrlDTO) {
+    public Response createKnowledgeUrl(String aiContextId, CreateAIKnowledgeUrlRequestDTO aiKnowledgeUrlDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'createKnowledgeUrl'");
     }
 
     @Override
     public Response createKnowledgeVectorDb(String aiContextId,
-            @Valid @NotNull AIKnowledgeVectorDbDTO aiKnowledgeVectorDbDTO) {
+            CreateAIKnowledgeVectorDbRequestDTO aiKnowledgeVectorDbDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'createKnowledgeVectorDb'");
     }
@@ -202,47 +210,47 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
     }
 
     @Override
-    public Response updateAIContext(String aiContextId, @Valid @NotNull AIContextDTO aiContextDTO) {
+    public Response updateAIContext(String aiContextId, UpdateAIContextRequestDTO aiContextDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateAIContext'");
     }
 
     @Override
     public Response updateAIKnowledgeBase(String aiKnowledgebaseId,
-            @Valid @NotNull UpdateAIKnowledgeBaseRequestDTO aiKnowledgeBaseDTO) {
+            UpdateAIKnowledgeBaseRequestDTO aiKnowledgeBaseDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateAIKnowledgeBase'");
     }
 
     @Override
-    public Response updateAIProvider(String aiProviderId, @Valid @NotNull AIProviderDTO aiProviderDTO) {
+    public Response updateAIProvider(String aiProviderId, UpdateAIProviderRequestDTO aiProviderDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateAIProvider'");
     }
 
     @Override
     public Response updateKnowledgeDb(String aiKnowledgeDatabaseId,
-            @Valid @NotNull AIKnowledgeDatabaseDTO aiKnowledgeDatabaseDTO) {
+            UpdateAIKnowledgeDatabaseRequestDTO aiKnowledgeDatabaseDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateKnowledgeDb'");
     }
 
     @Override
     public Response updateKnowledgeDocument(String aiKnowledgeDocumentId,
-            @Valid @NotNull AIKnowledgeDocumentDTO aiKnowledgeDocumentDTO) {
+            UpdateAIKnowledgeDocumentRequestDTO aiKnowledgeDocumentDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateKnowledgeDocument'");
     }
 
     @Override
-    public Response updateKnowledgeUrl(String aiKnowledgeUrlId, @Valid @NotNull AIKnowledgeUrlDTO aiKnowledgeUrlDTO) {
+    public Response updateKnowledgeUrl(String aiKnowledgeUrlId, UpdateAIKnowledgeUrlRequestDTO aiKnowledgeUrlDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateKnowledgeUrl'");
     }
 
     @Override
     public Response updateKnowledgeVectorDb(String aiKnowledgeVdbId,
-            @Valid @NotNull AIKnowledgeVectorDbDTO aiKnowledgeVectorDbDTO) {
+            UpdateAIKnowledgeVectorDbRequestDTO aiKnowledgeVectorDbDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateKnowledgeVectorDb'");
     }

@@ -104,7 +104,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIContext'
+              $ref: '#/components/schemas/CreateAIContextRequest'
       responses:
         "201":
           description: New AIContext created
@@ -181,7 +181,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIContext'
+              $ref: '#/components/schemas/UpdateAIContextRequest'
       responses:
         '204':
           description: AI Context updated
@@ -285,7 +285,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIKnowledgeVectorDb'
+              $ref: '#/components/schemas/CreateAIKnowledgeVectorDbRequest'
       responses:
         "201":
           description: New AIKnowledgeVectorDb created
@@ -324,7 +324,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIKnowledgeUrl'
+              $ref: '#/components/schemas/CreateAIKnowledgeUrlRequest'
       responses:
         "201":
           description: New AIKnowledgeUrl created
@@ -391,7 +391,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIKnowledgeDocument'
+              $ref: '#/components/schemas/CreateAIKnowledgeDocumentRequest'
       responses:
         "201":
           description: New AIKnowledgeDocument created
@@ -431,7 +431,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIKnowledgeDatabase'
+              $ref: '#/components/schemas/CreateAIKnowledgeDatabaseRequest'
       responses:
         "201":
           description: New AIKnowledgeDatabase created
@@ -470,7 +470,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIKnowledgeDatabase'
+              $ref: '#/components/schemas/UpdateAIKnowledgeDatabaseRequest'
       responses:
         '204':
           description: AI KnowledgeDb updated
@@ -532,7 +532,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIProvider'
+              $ref: '#/components/schemas/CreateAIProviderRequest'
       responses:
         "201":
           description: New AIProvider created
@@ -570,7 +570,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIProvider'
+              $ref: '#/components/schemas/UpdateAIProviderRequest'
       responses:
         '204':
           description: AI Provider updated
@@ -635,7 +635,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIKnowledgeDocument'
+              $ref: '#/components/schemas/UpdateAIKnowledgeDocumentRequest'
       responses:
         '204':
           description: AIKnowledgeDocument updated
@@ -646,7 +646,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetailResponse'
         "404":
-          description: AI Provider not found
+          description: AI Knowledge Document not found
 
     delete:
       tags:
@@ -682,7 +682,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIKnowledgeUrl'
+              $ref: '#/components/schemas/UpdateAIKnowledgeUrlRequest'
       responses:
         '204':
           description: AI KnowledgeUrl updated
@@ -728,7 +728,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AIKnowledgeVectorDb'
+              $ref: '#/components/schemas/UpdateAIKnowledgeVectorDbRequest'
       responses:
         '204':
           description: AIKnowlegeVectorDb updated
@@ -1005,6 +1005,44 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AIContext'
+    CreateAIProviderRequest:
+      required:
+        - name
+        - modelName
+        - modelVersion
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        llmUrl:
+          type: string
+        modelName:
+          type: string
+        modelVersion:
+          type: string
+        apiKey:
+          type: string
+    UpdateAIProviderRequest:
+      required:
+        - name
+        - modelName
+        - modelVersion
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        llmUrl:
+          type: string
+        modelName:
+          type: string
+        modelVersion:
+          type: string
+        apiKey:
+          type: string          
     AIProvider:
       required:
         - name
@@ -1057,6 +1095,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AIProvider'                                                      
+    CreateAIKnowledgeDocumentRequest:
+      required:
+        - documentRefId
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DocumentStatusType'
+        name:
+          type: string
+        documentRefId:
+          type: string
+    UpdateAIKnowledgeDocumentRequest:
+      required:
+        - documentRefId
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DocumentStatusType'
+        name:
+          type: string
+        documentRefId:
+          type: string
     AIKnowledgeDocument:
       required:
         - documentRefId
@@ -1080,6 +1140,28 @@ components:
         name:
           type: string
         documentRefId:
+          type: string                    
+    CreateAIKnowledgeUrlRequest:
+      required:
+        - url
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+    UpdateAIKnowledgeUrlRequest:
+      required:
+        - url
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        url:
           type: string
     AIKnowledgeUrl:
       required:
@@ -1104,6 +1186,44 @@ components:
         description:
           type: string
         url:
+          type: string
+    CreateAIKnowledgeVectorDbRequest:
+      required:
+        - vdbUrl
+        - user
+        - pwd
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        vdbUrl:
+          type: string
+        vdbCollection:
+          type: string 
+        user:
+          type: string
+        pwd:
+          type: string
+    UpdateAIKnowledgeVectorDbRequest:
+      required:
+        - vdbUrl
+        - user
+        - pwd
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        vdbUrl:
+          type: string
+        vdbCollection:
+          type: string 
+        user:
+          type: string
+        pwd:
           type: string
     AIKnowledgeVectorDb:
       required:
@@ -1136,7 +1256,49 @@ components:
         user:
           type: string
         pwd:
-          type: string          
+          type: string                    
+    CreateAIKnowledgeDatabaseRequest:
+      required:
+        - db
+        - user
+        - pwd
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        db:
+          type: string
+        user:
+          type: string 
+        pwd:
+          type: string
+        tables:
+          type: array
+          items:
+            type: string
+    UpdateAIKnowledgeDatabaseRequest:
+      required:
+        - db
+        - user
+        - pwd
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        db:
+          type: string
+        user:
+          type: string 
+        pwd:
+          type: string
+        tables:
+          type: array
+          items:
+            type: string            
     AIKnowledgeDatabase:
       required:
         - db
@@ -1182,6 +1344,56 @@ components:
           type: string
           format: date-time
         # Add any other relevant properties here, such as ID or metadata            
+    CreateAIContextRequest:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+        llmSystemMessage:
+          type: string
+        llmProvider:
+          $ref: '#/components/schemas/AIProvider'
+        vectorDb:
+          $ref: '#/components/schemas/AIKnowledgeVectorDb'          
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIKnowledgeDocument'
+        urls:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIKnowledgeUrl'
+        dbs:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIKnowledgeDatabase'
+    UpdateAIContextRequest:
+      required:
+        - name
+      type: object
+      properties:
+        name:
+          type: string
+        llmSystemMessage:
+          type: string
+        llmProvider:
+          $ref: '#/components/schemas/AIProvider'
+        vectorDb:
+          $ref: '#/components/schemas/AIKnowledgeVectorDb'          
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIKnowledgeDocument'
+        urls:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIKnowledgeUrl'
+        dbs:
+          type: array
+          items:
+            $ref: '#/components/schemas/AIKnowledgeDatabase'            
     AIContext:
       required:
         - name
