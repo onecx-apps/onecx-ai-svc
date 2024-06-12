@@ -14,7 +14,7 @@ import io.quarkus.test.InjectMock;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-class KnowledgeBaseDAOTest {
+class AIKnowledgeBaseDAOTest {
     @Inject
     AIKnowledgeBaseDAO dao;
 

@@ -4,8 +4,10 @@ import jakarta.inject.Inject;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 import org.tkit.quarkus.rs.mappers.OffsetDateTimeMapper;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeBaseDTO;
@@ -47,5 +49,19 @@ public abstract class KnowledgeBaseMapper {
     @Mapping(target = "removeContextsItem", ignore = true)
     @Mapping(target = "contexts", ignore = true)
     public abstract AIKnowledgeBaseDTO map(AIKnowledgeBase knowledgeBase);
+
+    @Named("properties")
+    public String mapToString(Object properties) {
+
+        if (properties == null) {
+            return null;
+        }
+
+        try {
+            return mapper.writeValueAsString(properties);
+        } catch (JsonProcessingException e) {
+            return null;
+        }
+    }
 
 }

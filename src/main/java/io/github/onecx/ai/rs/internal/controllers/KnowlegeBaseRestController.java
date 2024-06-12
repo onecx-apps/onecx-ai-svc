@@ -101,6 +101,15 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
     }
 
     @Override
+    public Response getAIKnowledgeBase(String id) {
+        var item = dao.findById(id);
+        if (item == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(mapper.map(item)).build();
+    }
+
+    @Override
     public Response createAIProvider(CreateAIProviderRequestDTO aiProviderDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'createAIProvider'");
@@ -260,6 +269,42 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
             @Valid @NotNull UploadKnowledgeDocumentsRequestDTO uploadKnowledgeDocumentsRequestDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'uploadKnowledgeDocuments'");
+    }
+
+    @Override
+    public Response getAIKnowledgeUrl(String id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAIKnowledgeUrl'");
+    }
+
+    @Override
+    public Response getAIProvider(String id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAIProvider'");
+    }
+
+    @Override
+    public Response getAIKnowledgeDatabase(String id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAIKnowledgeDatabase'");
+    }
+
+    @Override
+    public Response getAIKnowledgeDocument(String id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAIKnowledgeDocument'");
+    }
+
+    @Override
+    public Response getAIKnowledgeVectorDb(String id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAIKnowledgeVectorDb'");
+    }
+
+    @Override
+    public Response getAIProviderOfAIContext(String id, String aiProviderId) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getAIProviderOfAIContext'");
     }
 
 }
