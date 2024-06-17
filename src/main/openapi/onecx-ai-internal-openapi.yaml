@@ -7,6 +7,12 @@ servers:
   - url: "http://onecx-ai-svc:8080"
 tags:
   - name: aiKnowledgeBaseInternal
+  - name: aiContextInternal
+  - name: aiProviderInternal
+  - name: aiKnowledgeDocumentInternal
+  - name: aiKnowledgeVectorDbInternal
+  - name: aiKnowledgeUrlInternal
+  - name: aiKnowledgeDatabaseInternal
   - name: aiInternal  
 paths:
 
@@ -90,7 +96,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetailResponse'
         "404":
-          description: AI Provider not found 
+          description: AI Knowledgebase not found 
     delete:
       tags:
         - aiKnowledgeBaseInternal    
@@ -212,7 +218,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetailResponse'
         "404":
-          description: AI Provider not found
+          description: AI Context not found
   
   /internal/ai/ai-contexts/{id}/documents:
     post:
@@ -589,7 +595,7 @@ paths:
   /internal/ai/ai-providers:                  
     post:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiProviderInternal
       summary: Create an AI Provider
       operationId: createAIProvider
       requestBody:
@@ -621,7 +627,7 @@ paths:
   /internal/ai/ai-providers/{id}:
     get:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiProviderInternal
       description: Return AI Provider by ID
       operationId: getAIProvider
       parameters:
@@ -641,7 +647,7 @@ paths:
           description: Not found  
     put:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiProviderInternal
       summary: Update an AI Provider
       operationId: updateAIProvider
       parameters:
@@ -669,7 +675,7 @@ paths:
           description: AI Provider not found 
     delete:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiProviderInternal    
       summary: Delete an AI Provider
       operationId: deleteAIProvider
       parameters:
@@ -684,7 +690,7 @@ paths:
   /internal/ai/ai-providers/search:
     post:
       tags:
-        - aiKnowledgeBaseInternal     
+        - aiProviderInternal     
       summary: Find AI Providers by Search Criteria
       operationId: findAIProviderBySearchCriteria
       requestBody:
@@ -1023,8 +1029,14 @@ components:
           type: string
         description:
           type: string
+        llmUrl:
+          type: string       
         modelName:
           type: string       
+        modelVersion:
+          type: string
+        apiKey:
+          type: string          
         appId:
           type: string                                      
         tenandId:
@@ -1167,6 +1179,8 @@ components:
           type: string
         modelVersion:
           type: string
+        appId:
+          type: string           
         apiKey:
           type: string
     UpdateAIProviderRequest:
@@ -1186,6 +1200,8 @@ components:
           type: string
         modelVersion:
           type: string
+        appId:
+          type: string           
         apiKey:
           type: string          
     AIProvider:
@@ -1218,6 +1234,8 @@ components:
           type: string
         modelVersion:
           type: string
+        appId:
+          type: string           
         apiKey:
           type: string
     AIProviderPageResult:

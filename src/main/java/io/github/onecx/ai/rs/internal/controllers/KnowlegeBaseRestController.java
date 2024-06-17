@@ -23,14 +23,12 @@ import gen.io.github.onecx.ai.rs.internal.model.AIContextSearchCriteriaDTO;
 import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeBaseSearchCriteriaDTO;
 import gen.io.github.onecx.ai.rs.internal.model.AIKnowledgeDocumentDTO;
 import gen.io.github.onecx.ai.rs.internal.model.AIProviderDTO;
-import gen.io.github.onecx.ai.rs.internal.model.AIProviderSearchCriteriaDTO;
 import gen.io.github.onecx.ai.rs.internal.model.CreateAIContextRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.CreateAIKnowledgeBaseRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.CreateAIKnowledgeDatabaseRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.CreateAIKnowledgeDocumentRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.CreateAIKnowledgeUrlRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.CreateAIKnowledgeVectorDbRequestDTO;
-import gen.io.github.onecx.ai.rs.internal.model.CreateAIProviderRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.ProblemDetailResponseDTO;
 import gen.io.github.onecx.ai.rs.internal.model.UpdateAIContextRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.UpdateAIKnowledgeBaseRequestDTO;
@@ -38,7 +36,6 @@ import gen.io.github.onecx.ai.rs.internal.model.UpdateAIKnowledgeDatabaseRequest
 import gen.io.github.onecx.ai.rs.internal.model.UpdateAIKnowledgeDocumentRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.UpdateAIKnowledgeUrlRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.UpdateAIKnowledgeVectorDbRequestDTO;
-import gen.io.github.onecx.ai.rs.internal.model.UpdateAIProviderRequestDTO;
 import gen.io.github.onecx.ai.rs.internal.model.UploadKnowledgeDocumentsRequestDTO;
 import io.github.onecx.ai.domain.daos.AIKnowledgeBaseDAO;
 import io.github.onecx.ai.rs.internal.mappers.ExceptionMapper;
@@ -72,8 +69,8 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
         return exceptionMapper.constraint(ex);
     }
 
-    enum ChatErrorKeys {
-        CHAT_DOES_NOT_EXIST
+    enum KnowledgeBaseErrorKeys {
+        KB_DOES_NOT_EXIST
     }
 
     @Override
@@ -107,12 +104,6 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         return Response.ok(mapper.map(item)).build();
-    }
-
-    @Override
-    public Response createAIProvider(CreateAIProviderRequestDTO aiProviderDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createAIProvider'");
     }
 
     @Override
@@ -152,12 +143,6 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
     public Response deleteAIKnowledgeBase(String aiKnowledgebaseId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteAIKnowledgeBase'");
-    }
-
-    @Override
-    public Response deleteAIProvider(String aiProviderId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteAIProvider'");
     }
 
     @Override
@@ -206,13 +191,6 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
     }
 
     @Override
-    public Response findAIProviderBySearchCriteria(
-            @Valid @NotNull AIProviderSearchCriteriaDTO aiProviderSearchCriteriaDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAIProviderBySearchCriteria'");
-    }
-
-    @Override
     public Response removeAIProvider(String aiContextId, String aiProviderId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'removeAIProvider'");
@@ -229,12 +207,6 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
             UpdateAIKnowledgeBaseRequestDTO aiKnowledgeBaseDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateAIKnowledgeBase'");
-    }
-
-    @Override
-    public Response updateAIProvider(String aiProviderId, UpdateAIProviderRequestDTO aiProviderDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateAIProvider'");
     }
 
     @Override
@@ -275,12 +247,6 @@ public class KnowlegeBaseRestController implements AiKnowledgeBaseInternalApi {
     public Response getAIKnowledgeUrl(String id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getAIKnowledgeUrl'");
-    }
-
-    @Override
-    public Response getAIProvider(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAIProvider'");
     }
 
     @Override
