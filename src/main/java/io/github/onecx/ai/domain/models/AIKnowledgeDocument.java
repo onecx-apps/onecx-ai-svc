@@ -14,7 +14,10 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "AI_KNOWLEDGE_DOCUMENT")
+@NamedEntityGraph(name = AIKnowledgeDocument.AI_KNOWLEDGE_DOCUMENT_LOAD, includeAllAttributes = true)
 public class AIKnowledgeDocument extends TraceableEntity {
+
+    public static final String AI_KNOWLEDGE_DOCUMENT_LOAD = "AI_KNOWLEDGE_DOCUMENT_LOAD";
 
     @TenantId
     @Column(name = "TENANT_ID")

@@ -1,6 +1,5 @@
 package io.github.onecx.ai.domain.models;
 
-import static jakarta.persistence.CascadeType.ALL;
 import static jakarta.persistence.FetchType.LAZY;
 
 import java.util.HashSet;
@@ -37,7 +36,7 @@ public class AIKnowledgeBase extends TraceableEntity {
     @Column(name = "APP_ID")
     private String appId;
 
-    @OneToMany(cascade = ALL, fetch = LAZY, mappedBy = "knowledgebase", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = LAZY, mappedBy = "knowledgebase", orphanRemoval = true)
     @OrderBy("creationDate ASC")
     private Set<AIContext> contexts = new HashSet<>();
 

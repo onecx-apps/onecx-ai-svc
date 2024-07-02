@@ -42,7 +42,7 @@ public class AIContext extends TraceableEntity {
     @JoinColumn(name = "KB_ID")
     private AIKnowledgeBase knowledgebase;
 
-    @OneToOne(mappedBy = "aiContext", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "aiContext", cascade = CascadeType.REMOVE)
     private AIKnowledgeVectorDb aiKnowledgeVectorDb;
 
     @OneToMany(cascade = { CascadeType.REMOVE }, fetch = LAZY, mappedBy = "aiContext", orphanRemoval = true)

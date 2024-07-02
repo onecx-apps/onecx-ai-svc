@@ -6,13 +6,35 @@
 	<AI_KB guid="kb-22-222" optlock="0" name="knowledgebase2" description="knowledgebase_description_2" app_id="appId"  tenant_id="default" creationuser="user1" />
 	<AI_KB guid="kb-DELETE_1" optlock="0" name="knowledgebase3" description="knowledgebase_description_3" app_id="appId" tenant_id="default" creationuser="user2"/>
 
+	<!-- AIContext -->
+	<AI_CONTEXT guid="context-11-111" optlock="0" name="context1" description="context_description_1" llm_system_message="context_llm_system_message_1" kb_id="kb-11-111" app_id="appId" tenant_id="default" creationuser="user1"/>
+	<AI_CONTEXT guid="context-22-222" optlock="0" name="context2" description="context_description_2" llm_system_message="context_llm_system_message_2" kb_id="kb-22-222" app_id="appId" tenant_id="default" creationuser="user1"/>
+	<AI_CONTEXT guid="context-DELETE_1" optlock="0" name="context3" description="context_description_3" llm_system_message="context_llm_system_message_3" kb_id="kb-22-222" app_id="appId" tenant_id="default" creationuser="user2"/>
+
 	<!-- AIProvider -->
 	<AI_PROVIDER guid="provider-11-111" optlock="0" name="provider1" description="provider_description_1" llm_url="http://some.url.org" model_name="model1" model_version="version1" app_id="appId" tenant_id="default" creationuser="user1"/>
 	<AI_PROVIDER guid="provider-22-222" optlock="0" name="provider2" description="provider_description_2" llm_url="http://some.url.org" model_name="model2" model_version="version1" app_id="appId"  tenant_id="default" creationuser="user1" />
 	<AI_PROVIDER guid="provider-DELETE_1" optlock="0" name="provider3" description="provider_description_3" llm_url="http://some.url.org" model_name="model3" model_version="version1" app_id="appId" tenant_id="default" creationuser="user2"/>
 
+	<!-- AIKnowledgeVectorDb -->
+	<AI_KNOWLEDGE_VDB guid="vector-11-111" optlock="0" name="vector1" description="vector_description_1" vdb="vector_vdb_1" vdb_collection="vector_collection_1" tenant_id="default" creationuser="user1"/>
+	<AI_KNOWLEDGE_VDB guid="vector-22-222" optlock="0" name="vector2" description="vector_description_2" vdb="vector_vdb_2" vdb_collection="vector_collection_2" tenant_id="default" creationuser="user1"/>
+	<AI_KNOWLEDGE_VDB guid="vector-DELETE_1" optlock="0" name="vector3" description="vector_description_3" vdb="vector_vdb_3" vdb_collection="vector_collection_3" tenant_id="default" creationuser="user2"/>
 
+	<!-- AIKnowledgeUrl -->
+	<AI_KNOWLEDGE_URL guid="url-11-111" optlock="0" name="knowledge_url_name1" description="url_description_1" url="url1" tenant_id="default" creationuser="user1"/>
+	<AI_KNOWLEDGE_URL guid="url-22-222" optlock="0" name="knowledge_url_name2" description="url_description_2" url="url2" tenant_id="default" creationuser="user1"/>
+	<AI_KNOWLEDGE_URL guid="url-DELETE_1" optlock="0" name="knowledge_url_name3" description="url_description_3" url="url3" tenant_id="default" creationuser="user2"/>
 
+	<!-- AIKnowledgeDatabase -->
+	<AI_KNOWLEDGE_DATABASE guid="db-11-111" optlock="0" name="knowledge_db_name1" description="db_description_1" db="db1" usr="usr1" tenant_id="default" creationuser="user1"/>
+	<AI_KNOWLEDGE_DATABASE guid="db-22-222" optlock="0" name="knowledge_db_name2" description="db_description_2" db="db2" usr="usr2" tenant_id="default" creationuser="user1"/>
+	<AI_KNOWLEDGE_DATABASE guid="db-DELETE_1" optlock="0" name="knowledge_db_name3" description="db_description_3" db="db3" usr="usr3" tenant_id="default" creationuser="user2"/>
+
+	<!-- AIKnowledgeDocument -->
+	<AI_KNOWLEDGE_DOCUMENT guid="document-11-111" optlock="0" name="knowledge_document_name1" doc_ref_id="document_ref1" status="NEW" tenant_id="default" context_id="context-22-222" creationuser="user1"/>
+	<AI_KNOWLEDGE_DOCUMENT guid="document-22-222" optlock="0" name="knowledge_document_name2" doc_ref_id="document_ref2" status="PROCESSING" tenant_id="default" creationuser="user1"/>
+	<AI_KNOWLEDGE_DOCUMENT guid="document-DELETE_1" optlock="0" name="knowledge_document_name3" doc_ref_id="document_ref3" status="NEW" tenant_id="default" creationuser="user2"/>
 
 	<!-- TENANT -->
 	<!-- Knowledgebase -->
@@ -20,13 +42,35 @@
 	<AI_KB guid="t-kb-22-222" optlock="0" name="knowledgebase2" description="knowledgebase_description_2" app_id="appId" tenant_id="tenant-100" creationuser="user1"/>
 	<AI_KB guid="t-kb-DELETE_1" optlock="0" name="knowledgebase3" description="knowledgebase_description_3" app_id="appId" tenant_id="tenant-200" creationuser="user2"/>
 
-
-
+	<!-- AIContext -->
+	<AI_CONTEXT guid="t-context-11-111" optlock="0" name="context1" description="context_description_1" llm_system_message="context_llm_system_message_1" kb_id="t-kb-11-111" app_id="appId" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_CONTEXT guid="t-context-22-222" optlock="0" name="context2" description="context_description_2" llm_system_message="context_llm_system_message_2" kb_id="t-kb-22-222" app_id="appId" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_CONTEXT guid="t-context-DELETE_1" optlock="0" name="context3" description="context_description_3" llm_system_message="context_llm_system_message_3" kb_id="t-kb-22-222" app_id="appId" tenant_id="tenant-200" creationuser="user2"/>
 
 	<!-- AIProvider -->
 	<AI_PROVIDER guid="t-provider-11-111" optlock="0" name="provider1" description="provider_description_1" llm_url="http://some.url.org" model_name="model1" model_version="version1" app_id="appId" tenant_id="tenant-100" creationuser="user1"/>
 	<AI_PROVIDER guid="t-provider-22-222" optlock="0" name="provider2" description="provider_description_2" llm_url="http://some.url.org" model_name="model2" model_version="version1" app_id="appId" tenant_id="tenant-100" creationuser="user1" />
 	<AI_PROVIDER guid="t-provider-DELETE_1" optlock="0" name="provider3" description="provider_description_3" llm_url="http://some.url.org" model_name="model3" model_version="version1" app_id="appId" tenant_id="tenant-200" creationuser="user2"/>
+
+	<!-- AIKnowledgeVectorDb -->
+	<AI_KNOWLEDGE_VDB guid="t-vector-11-111" optlock="0" name="vector1" description="vector_description_1" vdb="vector_vdb_1" vdb_collection="vector_collection_1" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_KNOWLEDGE_VDB guid="t-vector-22-222" optlock="0" name="vector2" description="vector_description_2" vdb="vector_vdb_2" vdb_collection="vector_collection_2" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_KNOWLEDGE_VDB guid="t-vector-DELETE_1" optlock="0" name="vector3" description="vector_description_3" vdb="vector_vdb_3" vdb_collection="vector_collection_3" tenant_id="tenant-200" creationuser="user2"/>
+
+	<!-- AIKnowledgeUrl -->
+	<AI_KNOWLEDGE_URL guid="t-url-11-111" optlock="0" name="knowledge_url_name1" description="url_description_1" url="url1" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_KNOWLEDGE_URL guid="t-url-22-222" optlock="0" name="knowledge_url_name2" description="url_description_2" url="url2" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_KNOWLEDGE_URL guid="t-url-DELETE_1" optlock="0" name="knowledge_url_name3" description="url_description_3" url="url3" tenant_id="tenant-200" creationuser="user2"/>
+
+	<!-- AIKnowledgeDatabase -->
+	<AI_KNOWLEDGE_DATABASE guid="t-db-11-111" optlock="0" name="knowledge_db_name1" description="db_description_1" db="db1" usr="usr1" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_KNOWLEDGE_DATABASE guid="t-db-22-222" optlock="0" name="knowledge_db_name2" description="db_description_2" db="db2" usr="usr2" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_KNOWLEDGE_DATABASE guid="t-db-DELETE_1" optlock="0" name="knowledge_db_name3" description="db_description_3" db="db3" usr="usr3" tenant_id="tenant-200" creationuser="user2"/>
+
+	<!-- AIKnowledgeDocument -->
+	<AI_KNOWLEDGE_DOCUMENT guid="t-document-11-111" optlock="0" name="knowledge_document_name1" doc_ref_id="document_ref1" status="NEW" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_KNOWLEDGE_DOCUMENT guid="t-document-22-222" optlock="0" name="knowledge_document_name2" doc_ref_id="document_ref2" status="PROCESSING" tenant_id="tenant-100" creationuser="user1"/>
+	<AI_KNOWLEDGE_DOCUMENT guid="t-document-DELETE_1" optlock="0" name="knowledge_document_name3" doc_ref_id="document_ref3" status="NEW" tenant_id="tenant-200" creationuser="user2"/>
 
 
 
