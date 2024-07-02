@@ -14,7 +14,10 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "AI_KNOWLEDGE_VDB")
+@NamedEntityGraph(name = AIKnowledgeVectorDb.AI_KNOWLEDGE_VDB_LOAD, includeAllAttributes = true)
 public class AIKnowledgeVectorDb extends TraceableEntity {
+
+    public static final String AI_KNOWLEDGE_VDB_LOAD = "AI_KNOWLEDGE_VDB_LOAD";
 
     @TenantId
     @Column(name = "TENANT_ID")

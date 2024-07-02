@@ -115,7 +115,7 @@ paths:
   /internal/ai/ai-knowledgebases/{id}/ai-contexts:
     post:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiContextInternal
       summary: Create an AI Context
       operationId: createAIContext
       parameters:
@@ -150,6 +150,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetailResponse'
+    get:
+      tags:
+        - aiContextInternal
+      description: Return AIContexts by knowledgebaseID
+      operationId: getAIContextsByKnowledgeBaseId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIContext'
+        "404":
+          description: Not found
 
 
   /internal/ai/ai-knowledgebases/search:
@@ -176,9 +198,30 @@ paths:
 
 
   /internal/ai/ai-contexts/{id}:
+    get:
+      tags:
+        - aiContextInternal
+      summary: Get AIContext
+      operationId: getAIContext
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIContext'
+        "404":
+          description: Not found
+
     delete:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiContextInternal
       summary: Delete AIContext
       operationId: deleteAIContext
       parameters:
@@ -193,7 +236,7 @@ paths:
 
     put:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiContextInternal
       summary: Update an AI Context
       operationId: updateAIContext      
       parameters:
@@ -223,7 +266,7 @@ paths:
   /internal/ai/ai-contexts/{id}/documents:
     post:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiKnowledgeDocumentInternal
       summary: Upload Documents into Document Management and create AI Knowledge Documents
       operationId: uploadKnowledgeDocuments      
       parameters:
@@ -322,7 +365,7 @@ paths:
   /internal/ai/ai-contexts/{id}/ai-knowledge-vdb:
     post:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiKnowledgeVectorDbInternal
       summary: Create Knowledge Vector database
       operationId: createKnowledgeVectorDb
       parameters:
@@ -356,12 +399,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetailResponse'
-
+    get:
+      tags:
+        - aiKnowledgeVectorDbInternal
+      description: Return AIKnowledgeVectorDb by contextID
+      operationId: getAIKnowledgeVectorDbByContextId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIKnowledgeVectorDb'
+        "404":
+          description: Not found
 
   /internal/ai/ai-contexts/{id}/ai-knowledge-urls:
     post:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiKnowledgeUrlInternal
       summary: Create Knowledge URL
       operationId: createKnowledgeUrl
       parameters:
@@ -396,10 +458,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetailResponse'
 
+    get:
+      tags:
+        - aiKnowledgeUrlInternal
+      description: Return AIKnowledgeUrls by contextID
+      operationId: getAIKnowledgeUrlsByContextId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIKnowledgeUrl'
+        "404":
+          description: Not found
+
   /internal/ai/ai-contexts/{id}/ai-knowledge-documents:
     put:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiKnowledgeDocumentInternal
       summary: Embedd AI Knowledge Documents into Vector Database
       operationId: embedd KnowledgeDocuments
       parameters:
@@ -428,7 +513,7 @@ paths:
 
     post:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiKnowledgeDocumentInternal
       summary: Create an AI Knowledge Document
       operationId: createKnowledgeDocument
       parameters:
@@ -462,12 +547,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetailResponse'
-  
+    get:
+      tags:
+        - aiKnowledgeDocumentInternal
+      description: Return AIKnowledgeDocuments by contextID
+      operationId: getAIKnowledgeDocumentsByContextId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIKnowledgeDatabase'
+        "404":
+          description: Not found
 
   /internal/ai/ai-contexts/{id}/ai-knowledge-databases:
     post:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiKnowledgeDatabaseInternal
       summary: Creates a new AI knowledge database by context id.
       operationId: createKnowledgeDb
       parameters:
@@ -503,10 +609,33 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetailResponse'
 
+    get:
+      tags:
+        - aiKnowledgeDatabaseInternal
+      description: Return AIKnowledgeDatabases by contextID
+      operationId: getAIKnowledgeDatabasesByContextId
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AIKnowledgeDatabase'
+        "404":
+          description: Not found
+
   /internal/ai/ai-knowledge-databases/{id}:
     get:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiKnowledgeDatabaseInternal
       description: Return AIKnowledgeDatabase by ID
       operationId: getAIKnowledgeDatabase
       parameters:
@@ -526,7 +655,7 @@ paths:
           description: Not found    
     put:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiKnowledgeDatabaseInternal
       summary: Update Knowledge Database
       operationId: updateKnowledgeDb
       parameters:
@@ -555,7 +684,7 @@ paths:
           description: AI KnowledgeDb not found  
     delete:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiKnowledgeDatabaseInternal
       summary: Delete Knowledge Database from AI Context
       operationId: deleteKnowledgeDb
       parameters:
@@ -573,7 +702,7 @@ paths:
   /internal/ai/ai-contexts/search:
     post:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiContextInternal
       summary: Find AI Context by Search Criteria
       operationId: findAIContextBySearchCriteria
       requestBody:
@@ -712,7 +841,7 @@ paths:
   /internal/ai/ai-knowledge-documents/{id}:
     get:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiKnowledgeDocumentInternal
       description: Return AIKnowledgeDocument by ID
       operationId: getAIKnowledgeDocument
       parameters:
@@ -732,7 +861,7 @@ paths:
           description: Not found   
     put:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiKnowledgeDocumentInternal
       summary: Update an AIKnowledgeDocument
       operationId: updateKnowledgeDocument
       parameters:
@@ -761,7 +890,7 @@ paths:
 
     delete:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiKnowledgeDocumentInternal
       summary: Delete AI Knowledge Document
       operationId: deleteKnowledgeDocument
       parameters:
@@ -778,7 +907,7 @@ paths:
   /internal/ai/ai-knowledge-urls/{id}:
     get:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiKnowledgeUrlInternal
       description: Return AIKnowledgeUrl by ID
       operationId: getAIKnowledgeUrl
       parameters:
@@ -798,7 +927,7 @@ paths:
           description: Not found      
     put:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiKnowledgeUrlInternal
       summary: Update AIKnowledgeUrl
       operationId: updateKnowledgeUrl
       parameters:
@@ -827,7 +956,7 @@ paths:
           description: AI KnowledgeUrl not found                         
     delete:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiKnowledgeUrlInternal
       summary: Delete AIKnowledgeUrl
       operationId: deleteKnowledgeUrl
       parameters:
@@ -844,7 +973,7 @@ paths:
   /internal/ai/ai-knowledge-vdbs/{id}:
     get:
       tags:
-        - aiKnowledgeBaseInternal
+        - aiKnowledgeVectorDbInternal
       description: Return AIKnowlegeVectorDb by ID
       operationId: getAIKnowledgeVectorDb
       parameters:
@@ -864,7 +993,7 @@ paths:
           description: Not found    
     put:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiKnowledgeVectorDbInternal
       summary: Update AIKnowlegeVectorDb
       operationId: updateKnowledgeVectorDb
       parameters:
@@ -893,7 +1022,7 @@ paths:
           description: AIKnowlegeVectorDb not found                         
     delete:
       tags:
-        - aiKnowledgeBaseInternal    
+        - aiKnowledgeVectorDbInternal
       summary: Delete AIKnowlegeVectorDb
       operationId: deleteKnowledgeVectorDb      
       parameters:

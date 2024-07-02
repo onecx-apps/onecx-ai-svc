@@ -1,9 +1,13 @@
 package io.github.onecx.ai.domain.daos;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.EntityGraph;
+import jakarta.persistence.NoResultException;
 import jakarta.transaction.Transactional;
 
 import org.tkit.quarkus.jpa.daos.AbstractDAO;
+import org.tkit.quarkus.jpa.exceptions.DAOException;
+import org.tkit.quarkus.jpa.models.TraceableEntity_;
 
 import io.github.onecx.ai.domain.models.AIKnowledgeDatabase;
 
@@ -11,8 +15,26 @@ import io.github.onecx.ai.domain.models.AIKnowledgeDatabase;
 @Transactional(Transactional.TxType.NOT_SUPPORTED)
 public class AIKnowledgeDatabaseDAO extends AbstractDAO<AIKnowledgeDatabase> {
 
-    public enum ErrorKeys {
+    // https://hibernate.atlassian.net/browse/HHH-16830#icft=HHH-16830
+    @Override
+    public AIKnowledgeDatabase findById(Object id) throws DAOException {
+        try {
+            var cb = this.getEntityManager().getCriteriaBuilder();
+            var cq = cb.createQuery(AIKnowledgeDatabase.class);
+            var root = cq.from(AIKnowledgeDatabase.class);
+            cq.where(cb.equal(root.get(TraceableEntity_.ID), id));
 
-        ERROR_CREATE_KNOWLEDGE_DB,
+            EntityGraph graph = this.em.getEntityGraph(AIKnowledgeDatabase.AI_KNOWLEDGE_DATABASE_LOAD);
+
+            return this.getEntityManager().createQuery(cq).setHint(HINT_LOAD_GRAPH, graph).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        } catch (Exception e) {
+            throw new DAOException(AIKnowledgeDatabaseDAO.ErrorKeys.FIND_ENTITY_BY_ID_FAILED, e, entityName, id);
+        }
+    }
+
+    public enum ErrorKeys {
+        FIND_ENTITY_BY_ID_FAILED
     }
 }
