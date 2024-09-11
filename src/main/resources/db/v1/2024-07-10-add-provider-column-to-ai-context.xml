@@ -1,8 +1,9 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-    <changeSet id="deae79ef-b6f2-4577-a1b2-60006625a3b8" author="dev">
-        <loadData relativeToChangelogFile="true" file="2024-06-28-kb-data.csv" tableName="ai_kb" />
-        <loadData relativeToChangelogFile="true" file="2024-06-28-provider-data.csv" tableName="ai_provider" />
-        <loadData relativeToChangelogFile="true" file="2024-06-28-context-data.csv" tableName="ai_context" />
+    <changeSet id="71910d35-665f-473b-9fb7-c32c181edbb9" author="dev">
+        <addColumn tableName="ai_context">
+            <column name="provider_id" type="varchar(255)"/>
+        </addColumn>
+        <addForeignKeyConstraint baseColumnNames="provider_id" baseTableName="ai_context" constraintName="fk5cd28c811f26457a457e2645b" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="guid" referencedTableName="ai_provider" validate="true"/>
     </changeSet>
 </databaseChangeLog>

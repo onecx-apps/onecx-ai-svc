@@ -36,6 +36,7 @@ public interface AIContextMapper {
     @Mapping(target = "description", ignore = true)
     @Mapping(target = "knowledgebase", ignore = true)
     @Mapping(target = "aiKnowledgeVectorDb", ignore = true)
+    @Mapping(target = "provider", ignore = true)
     public abstract AIContext createAIContext(CreateAIContextRequestDTO dto);
 
     @Mapping(target = "creationDate", ignore = true)
@@ -54,6 +55,7 @@ public interface AIContextMapper {
     @Mapping(target = "aiKnowledgeUrls", ignore = true)
     @Mapping(target = "aiKnowledgeDbs", ignore = true)
     @Mapping(target = "aiKnowledgeDocuments", ignore = true)
+    @Mapping(target = "provider", ignore = true)
     public abstract AIContext updateAIContext(UpdateAIContextRequestDTO dto,
             @MappingTarget AIContext entity);
 

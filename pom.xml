@@ -13,6 +13,22 @@
     <artifactId>onecx-ai-quarkus-svc</artifactId>
     <version>999-SNAPSHOT</version>
 
+    <!--dependencyConvergence error diffrent version of okhttp3 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>4.12.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okio</groupId>
+                <artifactId>okio</artifactId>
+                <version>3.6.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <!-- 1000kit -->
         <dependency>
@@ -111,6 +127,23 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
         </dependency>
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-ollama</artifactId>
+            <version>0.32.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.tinylog</groupId>
+            <artifactId>tinylog-impl</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.tinylog</groupId>
+            <artifactId>slf4j-tinylog</artifactId>
+            <version>2.6.2</version>
+        </dependency>
+
 
         <!-- TEST -->
         <dependency>
@@ -138,11 +171,6 @@
             <artifactId>quarkus-test-keycloak-server</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>io.quarkiverse.mockserver</groupId>
-            <artifactId>quarkus-mockserver-test</artifactId>
-            <scope>test</scope>
-        </dependency>        
     </dependencies>
 
 
