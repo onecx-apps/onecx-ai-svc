@@ -1,6 +1,10 @@
 # onecx-ai-quarkus-svc
 OneCx AI quarkus Service
 
+build standard image
+```
+mvn clean install
+```
 
 build native image
 ```
