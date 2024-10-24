@@ -36,6 +36,11 @@ public interface AIContextMapper {
     @Mapping(target = "description", ignore = true)
     @Mapping(target = "knowledgebase", ignore = true)
     @Mapping(target = "aiKnowledgeVectorDb", ignore = true)
+    @Mapping(source = "llmProvider", target = "provider")
+    @Mapping(target = "provider.controlTraceabilityManual", ignore = true)
+    @Mapping(target = "provider.modificationCount", ignore = true)
+    @Mapping(target = "provider.persisted", ignore = true)
+    @Mapping(target = "provider.tenantId", ignore = true)
     public abstract AIContext createAIContext(CreateAIContextRequestDTO dto);
 
     @Mapping(target = "creationDate", ignore = true)
@@ -54,11 +59,15 @@ public interface AIContextMapper {
     @Mapping(target = "aiKnowledgeUrls", ignore = true)
     @Mapping(target = "aiKnowledgeDbs", ignore = true)
     @Mapping(target = "aiKnowledgeDocuments", ignore = true)
+    @Mapping(source = "llmProvider", target = "provider")
+    @Mapping(target = "provider.controlTraceabilityManual", ignore = true)
+    @Mapping(target = "provider.modificationCount", ignore = true)
+    @Mapping(target = "provider.persisted", ignore = true)
+    @Mapping(target = "provider.tenantId", ignore = true)
     public abstract AIContext updateAIContext(UpdateAIContextRequestDTO dto,
             @MappingTarget AIContext entity);
 
     @Mapping(target = "version", source = "modificationCount")
-    @Mapping(target = "llmProvider", ignore = true)
     @Mapping(target = "vectorDb", ignore = true)
     @Mapping(target = "documents", ignore = true)
     @Mapping(target = "removeDocumentsItem", ignore = true)
@@ -66,6 +75,8 @@ public interface AIContextMapper {
     @Mapping(target = "removeUrlsItem", ignore = true)
     @Mapping(target = "dbs", ignore = true)
     @Mapping(target = "removeDbsItem", ignore = true)
+    @Mapping(source = "provider", target = "llmProvider")
+    @Mapping(target = "llmProvider.version", ignore = true)
     public abstract AIContextDTO map(AIContext aiContext);
 
     @Mapping(target = "description", ignore = true)

@@ -1,5 +1,6 @@
 package io.github.onecx.ai.domain.models;
 
+import static jakarta.persistence.FetchType.EAGER;
 import static jakarta.persistence.FetchType.LAZY;
 
 import java.util.HashSet;
@@ -41,6 +42,10 @@ public class AIContext extends TraceableEntity {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "KB_ID")
     private AIKnowledgeBase knowledgebase;
+
+    @ManyToOne(fetch = EAGER)
+    @JoinColumn(name = "PROVIDER_ID")
+    private AIProvider provider;
 
     @OneToOne(mappedBy = "aiContext", cascade = CascadeType.REMOVE)
     private AIKnowledgeVectorDb aiKnowledgeVectorDb;

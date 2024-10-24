@@ -11,41 +11,29 @@
         "Content-Type": "application/json"
       },
       "body": {
-        "conversationId": "123456",
-        "message": "Generated AI Answer text",
-        "type": "ASSISTANT",
-        "creationDate": 1643684377000
+        "message": "Simple message from chat endpoint"
       }
     }
   },
   {
     "id": "2",
     "httpRequest": {
-      "method": "GET",
-      "path": "/ai/conversation/123456"
+      "method": "POST",
+      "path": "/test/api/generate"
     },
     "httpResponse": {
       "statusCode": 200,
-      "body": {
-        "conversationId": "123456",
-        "history": [
-          {
-            "conversationId": "123456",
-
-            "message": "Mock response for conversation",
-            "type": "USER",
-            "creationDate": 1643684377000
-          }
-        ],
-        "conversationType": "CHANNELING"
-      }
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "Simple message from generate endpoint"
     }
   },
   {
     "id": "3",
     "httpRequest": {
       "method": "POST",
-      "path": "/ai/startConversation",
+      "path": "/api/generate"
     },
     "httpResponse": {
       "statusCode": 200,
@@ -53,9 +41,10 @@
         "Content-Type": "application/json"
       },
       "body": {
-        "conversationId": "123456",
-        "history": [],
-        "conversationType": "CHANNELING"
+        "model": "llama3.2",
+        "created_at": "2023-08-04T08:52:19.385406455-07:00",
+        "response": "Mocking response from model",
+        "done": true
       }
     }
   }

@@ -6,15 +6,15 @@
 	<AI_KB guid="kb-22-222" optlock="0" name="knowledgebase2" description="knowledgebase_description_2" app_id="appId"  tenant_id="default" creationuser="user1" />
 	<AI_KB guid="kb-DELETE_1" optlock="0" name="knowledgebase3" description="knowledgebase_description_3" app_id="appId" tenant_id="default" creationuser="user2"/>
 
-	<!-- AIContext -->
-	<AI_CONTEXT guid="context-11-111" optlock="0" name="context1" description="context_description_1" llm_system_message="context_llm_system_message_1" kb_id="kb-11-111" app_id="appId" tenant_id="default" creationuser="user1"/>
-	<AI_CONTEXT guid="context-22-222" optlock="0" name="context2" description="context_description_2" llm_system_message="context_llm_system_message_2" kb_id="kb-22-222" app_id="appId" tenant_id="default" creationuser="user1"/>
-	<AI_CONTEXT guid="context-DELETE_1" optlock="0" name="context3" description="context_description_3" llm_system_message="context_llm_system_message_3" kb_id="kb-22-222" app_id="appId" tenant_id="default" creationuser="user2"/>
-
 	<!-- AIProvider -->
 	<AI_PROVIDER guid="provider-11-111" optlock="0" name="provider1" description="provider_description_1" llm_url="http://some.url.org" model_name="model1" model_version="version1" app_id="appId" tenant_id="default" creationuser="user1"/>
 	<AI_PROVIDER guid="provider-22-222" optlock="0" name="provider2" description="provider_description_2" llm_url="http://some.url.org" model_name="model2" model_version="version1" app_id="appId"  tenant_id="default" creationuser="user1" />
 	<AI_PROVIDER guid="provider-DELETE_1" optlock="0" name="provider3" description="provider_description_3" llm_url="http://some.url.org" model_name="model3" model_version="version1" app_id="appId" tenant_id="default" creationuser="user2"/>
+
+	<!-- AIContext -->
+	<AI_CONTEXT guid="context-11-111" optlock="0" name="context1" description="context_description_1" llm_system_message="context_llm_system_message_1" kb_id="kb-11-111" app_id="appId" tenant_id="default" provider_id="provider-11-111" creationuser="user1"/>
+	<AI_CONTEXT guid="context-22-222" optlock="0" name="context2" description="context_description_2" llm_system_message="context_llm_system_message_2" kb_id="kb-22-222" app_id="appId" tenant_id="default" creationuser="user1"/>
+	<AI_CONTEXT guid="context-DELETE_1" optlock="0" name="context3" description="context_description_3" llm_system_message="context_llm_system_message_3" kb_id="kb-22-222" app_id="appId" tenant_id="default" creationuser="user2"/>
 
 	<!-- AIKnowledgeVectorDb -->
 	<AI_KNOWLEDGE_VDB guid="vector-11-111" optlock="0" name="vector1" description="vector_description_1" vdb="vector_vdb_1" vdb_collection="vector_collection_1" tenant_id="default" creationuser="user1"/>

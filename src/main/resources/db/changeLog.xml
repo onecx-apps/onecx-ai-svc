@@ -4,6 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <include relativeToChangelogFile="true" file="v1/2024-06-10-create-tables.xml"/>
+    <include relativeToChangelogFile="true" file="v1/2024-07-10-add-provider-column-to-ai-context.xml"/>
     <include relativeToChangelogFile="true" file="v1/2024-06-28-load-test-data.xml"/>
     
 
