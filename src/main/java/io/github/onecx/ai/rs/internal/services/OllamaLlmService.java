@@ -1,10 +1,7 @@
 package io.github.onecx.ai.rs.internal.services;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -22,7 +19,9 @@ import dev.langchain4j.model.language.StreamingLanguageModel;
 import dev.langchain4j.model.ollama.OllamaStreamingChatModel;
 import dev.langchain4j.model.ollama.OllamaStreamingLanguageModel;
 import gen.io.github.onecx.ai.rs.internal.model.*;
+import io.github.onecx.ai.domain.criteria.AIContextSearchCriteria;
 import io.github.onecx.ai.domain.daos.AIContextDAO;
+import io.github.onecx.ai.domain.models.AIContext;
 import io.github.onecx.ai.rs.internal.mappers.AIProviderMapper;
 
 @ApplicationScoped
@@ -34,6 +33,8 @@ public class OllamaLlmService extends AbstractLlmService {
 
     @Inject
     AIProviderMapper mapperProvider;
+
+    final static String DEFAULT_AI_CONTEXT_NAME = "default";
 
     @Override
     public Response generate(GenerateRequestDTO generateRequestDTO) {
@@ -88,10 +89,27 @@ public class OllamaLlmService extends AbstractLlmService {
     @Override
     public Response chat(ChatRequestDTO chatRequestDTO) {
         final String[] message = { "" };
-        AIProviderDTO providerDTO = setUpProvider(chatRequestDTO.getAiContext());
         Map<String, String> customHeaders = new HashMap<>();
+        AIProviderDTO providerDTO = null;
 
-        if (providerDTO.getApiKey() != null) {
+        //checking ai-context -> if null then get the default
+        if (chatRequestDTO.getAiContext() == null) {
+            AIContextSearchCriteria searchCriteria = new AIContextSearchCriteria();
+            searchCriteria.setPageSize(10);
+            searchCriteria.setPageNumber(0);
+            searchCriteria.setName(DEFAULT_AI_CONTEXT_NAME);
+
+            Optional<AIContext> defaultAIContext = daoContext.findAIContextsByCriteria(searchCriteria).getStream().findFirst();
+
+            if (defaultAIContext.isPresent()) {
+                providerDTO = mapperProvider.map(defaultAIContext.get().getProvider());
+            }
+        } else {
+            providerDTO = setUpProvider(chatRequestDTO.getAiContext());
+        }
+
+        //setting authorization
+        if (providerDTO != null && providerDTO.getApiKey() != null) {
             customHeaders.put("Authorization", providerDTO.getApiKey());
         }
 

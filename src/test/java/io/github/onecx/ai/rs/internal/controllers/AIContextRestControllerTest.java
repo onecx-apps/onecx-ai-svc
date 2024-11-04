@@ -174,4 +174,39 @@ public class AIContextRestControllerTest extends AbstractTest {
         assertThat(contextDto.getId()).isEqualTo("context-11-111");
         assertThat(contextDto.getName()).isEqualTo("context1");
     }
+
+    @Test
+    void findAIContextBySearchCriteriaTest() {
+        var criteria = new AIContextSearchCriteriaDTO();
+
+        var data = given()
+                .contentType(APPLICATION_JSON)
+                .body(criteria)
+                .post("/ai-contexts/search")
+                .then()
+                .statusCode(OK.getStatusCode())
+                .contentType(APPLICATION_JSON)
+                .extract()
+                .as(AIContextPageResultDTO.class);
+
+        assertThat(data).isNotNull();
+        assertThat(data.getTotalElements()).isEqualTo(3);
+        assertThat(data.getStream()).isNotNull().hasSize(3);
+
+        criteria.setName("context2");
+        data = given()
+                .contentType(APPLICATION_JSON)
+                .body(criteria)
+                .post("/ai-contexts/search")
+                .then()
+                .statusCode(OK.getStatusCode())
+                .contentType(APPLICATION_JSON)
+                .extract()
+                .as(AIContextPageResultDTO.class);
+
+        assertThat(data).isNotNull();
+        assertThat(data.getTotalElements()).isEqualTo(1);
+        assertThat(data.getStream()).isNotNull().hasSize(1);
+
+    }
 }

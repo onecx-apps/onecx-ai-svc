@@ -7,15 +7,15 @@ services:
       # POSTGRES_USER: postgres
     ports:
       - "5432:5432"
-    volumes:      
-    - postgres:/var/lib/postgresql/data      
+    volumes:
+    - postgres:/var/lib/postgresql/data
     - ./db/:/docker-entrypoint-initdb.d/
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
       timeout: 10s
       retries: 5
-  onecx-chat-svc:
+  onecx-ai-svc:
 #    image: ghcr.io/onecx-apps/onecx-ai-quarkus-svc:0.0.0-rc.1
     image: localhost/onecx-ai-quarkus-svc:999-SNAPSHOT
     environment:

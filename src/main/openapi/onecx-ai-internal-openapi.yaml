@@ -1083,7 +1083,6 @@ paths:
                 conversation:
                   $ref: '#/components/schemas/Conversation'
               required:
-                - aiContext
                 - chatMessage
               additionalProperties: false
       responses:
