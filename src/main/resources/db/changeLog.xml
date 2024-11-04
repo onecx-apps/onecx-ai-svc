@@ -6,7 +6,6 @@
     <include relativeToChangelogFile="true" file="v1/2024-06-10-create-tables.xml"/>
     <include relativeToChangelogFile="true" file="v1/2024-07-10-add-provider-column-to-ai-context.xml"/>
     <include relativeToChangelogFile="true" file="v1/2024-06-28-load-test-data.xml"/>
-    <include relativeToChangelogFile="true" file="v1/2024-10-04-constraint-fix.xml"/>
-    
+   
 
 </databaseChangeLog>
