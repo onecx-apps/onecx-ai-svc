@@ -2,7 +2,14 @@ package io.github.onecx.ai.domain.models;
 
 import static jakarta.persistence.FetchType.LAZY;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedEntityGraph;
+import jakarta.persistence.Table;
 
 import org.hibernate.annotations.TenantId;
 import org.tkit.quarkus.jpa.models.TraceableEntity;
@@ -32,8 +39,8 @@ public class AIKnowledgeUrl extends TraceableEntity {
     @Column(name = "URL")
     private String url;
 
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "CONTEXT_ID")
+    @ManyToOne(fetch = LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "CONTEXT_ID", foreignKey = @ForeignKey(name = "fkoodghqtdfoeleqfkaji5cac48", foreignKeyDefinition = "FOREIGN KEY (context_id) REFERENCES ai_context(guid) ON DELETE CASCADE"))
     private AIContext aiContext;
 
 }

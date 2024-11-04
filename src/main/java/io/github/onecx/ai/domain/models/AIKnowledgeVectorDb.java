@@ -2,7 +2,13 @@ package io.github.onecx.ai.domain.models;
 
 import static jakarta.persistence.FetchType.LAZY;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ForeignKey;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.NamedEntityGraph;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 import org.hibernate.annotations.TenantId;
 import org.tkit.quarkus.jpa.models.TraceableEntity;
@@ -36,7 +42,7 @@ public class AIKnowledgeVectorDb extends TraceableEntity {
     private String vdbCollection;
 
     @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "CONTEXT_ID")
+    @JoinColumn(name = "CONTEXT_ID", foreignKey = @ForeignKey(name = "fkpprcmnadjedlukjcs1ck80fp5", foreignKeyDefinition = "FOREIGN KEY (context_id) REFERENCES ai_context(guid) ON DELETE CASCADE"))
     private AIContext aiContext;
 
 }
