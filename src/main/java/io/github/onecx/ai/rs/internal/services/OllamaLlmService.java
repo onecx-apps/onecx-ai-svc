@@ -92,14 +92,15 @@ public class OllamaLlmService extends AbstractLlmService {
         Map<String, String> customHeaders = new HashMap<>();
         AIProviderDTO providerDTO = null;
 
-        //checking ai-context -> if null then get the default
+        // checking ai-context -> if null then get the default
         if (chatRequestDTO.getAiContext() == null) {
             AIContextSearchCriteria searchCriteria = new AIContextSearchCriteria();
             searchCriteria.setPageSize(10);
             searchCriteria.setPageNumber(0);
             searchCriteria.setName(DEFAULT_AI_CONTEXT_NAME);
 
-            Optional<AIContext> defaultAIContext = daoContext.findAIContextsByCriteria(searchCriteria).getStream().findFirst();
+            Optional<AIContext> defaultAIContext = daoContext.findAIContextsByCriteria(searchCriteria).getStream()
+                    .findFirst();
 
             if (defaultAIContext.isPresent()) {
                 providerDTO = mapperProvider.map(defaultAIContext.get().getProvider());
@@ -108,7 +109,7 @@ public class OllamaLlmService extends AbstractLlmService {
             providerDTO = setUpProvider(chatRequestDTO.getAiContext());
         }
 
-        //setting authorization
+        // setting authorization
         if (providerDTO != null && providerDTO.getApiKey() != null) {
             customHeaders.put("Authorization", providerDTO.getApiKey());
         }
@@ -160,6 +161,7 @@ public class OllamaLlmService extends AbstractLlmService {
         ChatMessageDTO chatMessageDTO = new ChatMessageDTO();
         chatMessageDTO.setMessage(message[0]);
         chatMessageDTO.setType(ChatMessageDTO.TypeEnum.ASSISTANT);
+        chatMessageDTO.setCreationDate(System.currentTimeMillis());        
 
         return Response.ok(chatMessageDTO).build();
     }
