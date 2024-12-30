@@ -16,8 +16,8 @@ services:
       timeout: 10s
       retries: 5
   onecx-ai-svc:
-#    image: ghcr.io/onecx-apps/onecx-ai-quarkus-svc:0.0.0-rc.1
-    image: localhost/onecx-ai-quarkus-svc:999-SNAPSHOT
+#    image: ghcr.io/onecx-apps/onecx-ai-svc:0.0.0-rc.1
+    image: localhost/onecx-ai-svc:999-SNAPSHOT
     environment:
       QUARKUS_DATASOURCE_USERNAME: onecx_ai   
       QUARKUS_DATASOURCE_PASSWORD: onecx_ai      
