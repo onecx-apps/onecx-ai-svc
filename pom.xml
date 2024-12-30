@@ -10,7 +10,7 @@
         <version>0.51.0</version>
     </parent>
 
-    <artifactId>onecx-ai-quarkus-svc</artifactId>
+    <artifactId>onecx-ai-svc</artifactId>
     <version>999-SNAPSHOT</version>
 
     <!--dependencyConvergence error diffrent version of okhttp3 -->
