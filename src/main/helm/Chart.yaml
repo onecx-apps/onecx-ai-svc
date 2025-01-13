@@ -1,12 +1,12 @@
 apiVersion: v1
-name: onecx-ai-quarkus-svc
+name: onecx-ai-svc
 version: 0.0.0
 appVersion: 0.0.0
-description: Onecx ai quarkus service
+description: Onecx ai service
 keywords:
-  - tenant
+  - ai
 sources:
-  - https://github.com/onecx-apps/onecx-ai-quarkus-svc
+  - https://github.com/onecx-apps/onecx-ai-svc
 maintainers:
   - name: Tkit Developer
     email: tkit_dev@1000kit.org
