@@ -1,0 +1,8 @@
+include::onecx-ai-svc-attributes.adoc[opts=optional]
+
+== onecx-ai-svc
+
+include::docs.adoc[opts=optional]
+
+
+include::onecx-ai-svc-docs.adoc[opts=optional]
