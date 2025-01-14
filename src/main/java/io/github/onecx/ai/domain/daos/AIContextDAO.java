@@ -1,7 +1,6 @@
 package io.github.onecx.ai.domain.daos;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.persistence.EntityGraph;
 import jakarta.persistence.NoResultException;
 import jakarta.transaction.Transactional;
 
@@ -29,9 +28,7 @@ public class AIContextDAO extends AbstractDAO<AIContext> {
             var root = cq.from(AIContext.class);
             cq.where(cb.equal(root.get(TraceableEntity_.ID), id));
 
-            EntityGraph graph = this.em.getEntityGraph(AIContext.AI_CONTEXT_LOAD);
-
-            return this.getEntityManager().createQuery(cq).setHint(HINT_LOAD_GRAPH, graph).getSingleResult();
+            return this.getEntityManager().createQuery(cq).getSingleResult();
         } catch (NoResultException nre) {
             return null;
         } catch (Exception e) {

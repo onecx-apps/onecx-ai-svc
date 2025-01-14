@@ -57,7 +57,7 @@ public class AIContext extends TraceableEntity {
     @JoinColumn(name = "PROVIDER_ID")
     private AIProvider provider;
 
-    @OneToOne(mappedBy = "aiContext", cascade = CascadeType.REMOVE)
+    @OneToOne(mappedBy = "aiContext", cascade = CascadeType.REMOVE, fetch = LAZY)
     private AIKnowledgeVectorDb aiKnowledgeVectorDb;
 
     @OneToMany(cascade = { CascadeType.REMOVE }, fetch = LAZY, mappedBy = "aiContext", orphanRemoval = true)
